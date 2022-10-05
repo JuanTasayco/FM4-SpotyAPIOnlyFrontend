@@ -1,0 +1,16 @@
+<div class="container">
+    <div class="row p-2">
+        <div class="col-12">
+            <form (ngSubmit)="presionarEnter()">
+                <input type="text" #valoresInput class="form-control bg-dark rounded-5 px-4" (input)="obtenerBusqueda($event)"
+                    placeholder="Busca tu artista favorito..">
+            </form>
+        </div>
+    </div>
+</div>
+
+<app-spinner *ngIf="SpinnerIsActive"></app-spinner>
+
+<ng-container *ngIf="resultados.length>0">
+    <app-cards [contenidos]="resultados"></app-cards>
+</ng-container>

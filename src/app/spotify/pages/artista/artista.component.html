@@ -1,0 +1,49 @@
+<app-spinner *ngIf="SpinnerIsActive"></app-spinner>
+<ng-container *ngIf="artista">
+    <main class="Artists container mt-5">
+        <section class="Artists-section Artists-section--header row d-flex flex-wrap">
+            <div class="Artists-col col col-md-5 d-flex justify-content-center">
+                <img [src]="artista.images[0].url | img" alt="" class="Artists-img Artists-img--header  img-thumbnail">
+            </div>
+            <div class="Artists-col Artists-col--description col-md-7  text-center text-md-start ">
+                <h3 class="Artists-h3 display-3 fw-bold">{{artista.name}}</h3>
+                <a [href]="artista.external_urls.spotify" target="_blank" class="text-warning text-decoration-none fs-5">Ir a la página del
+                    artista</a>
+                <div class="pt-3">
+                    <button class="btn btn-success mt-1" routerLink="/spotify/buscar"> Regresar </button>
+                </div>
+            </div>
+        </section>
+
+        <section class="Artists-section Artists-section--table Table row mt-5">
+            <div class="Artists-col col overflow-auto py-5">
+                <table class="Artists-table table text-light">
+                    <thead class="">
+                        <tr class="fs-5">
+                            <th>Foto</th>
+                            <th>Album</th>
+                            <th>Canción</th>
+                            <th>Vista Previa</th>
+                        </tr>
+                    </thead>
+
+                    <tbody *ngFor="let track of tracks">
+                        <tr>
+                            <td><img [src]="track.album.images[0].url | img" alt=""
+                                    class="Artists-img Artists-img--table rounded-2"> </td>
+                            <td>{{track.album.name}}</td>
+                            <td>{{track.name}}</td>
+                            <td>
+                                <!--     <audio [src]="track.preview_url" controls></audio>  -->
+                                <iframe [src]="track.id | domseguro:'https://open.spotify.com/embed/track/'" width="300"
+                                    height="80" frameborder="0" allowtransparency="true"
+                                    allow="encrypted-media"></iframe>
+                            </td>
+                        </tr>
+                    </tbody>
+
+                </table>
+            </div>
+        </section>
+    </main>
+</ng-container>

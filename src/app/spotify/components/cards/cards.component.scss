@@ -1,0 +1,42 @@
+@use "src/_custom" as *;
+
+
+
+.Card {
+    cursor: pointer;
+    &-row{
+        animation: fade-in-fwd 0.8s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+    }
+    &-col {
+        transition: transform .5s;
+        
+        &:hover {
+            transform: scale(1.1);
+        }
+    }
+
+
+    &-img {}
+
+    &-overlay {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        flex-wrap: wrap;
+        gap: 5px;
+    }
+}
+
+
+@keyframes fade-in-fwd {
+    0% {
+        transform: translateZ(-80px);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateZ(0);
+        opacity: 1;
+    }
+}

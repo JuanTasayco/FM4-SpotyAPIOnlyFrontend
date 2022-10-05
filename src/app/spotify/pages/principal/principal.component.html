@@ -1,0 +1,17 @@
+<app-spinner *ngIf="SpinnerIsActive"></app-spinner>
+
+<div class="menu">
+   <div class="container mt-5">
+      <h2 class="display-2 fw-bold text-center">Nuestros Mayores Exitos, a la palma de tu mano con Spotify</h2>
+      <div class="w-50 m-auto my-4">
+         <p class="text-center fs-5">Busca tus canciones favoritas en nuestro buscador personalizado, elige y escucha los éxitos más recientes de tus artistas</p>
+      </div>
+      <div class="d-flex justify-content-center gap-4 mt-5">
+         <button class="btn btn-success" routerLink="/spotify/buscar">Buscar canciones</button>
+         <button class="btn btn-success"> <a class="text-decoration-none text-light" href="https://open.spotify.com/" target="d_blank">Ir a Spotify</a> </button>
+      </div>
+
+   </div>
+   
+   <app-cards [contenidos]="nuevasPeliculas"></app-cards>
+</div>

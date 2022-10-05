@@ -1,0 +1,18 @@
+@use "src/custom" as *;
+
+
+.Nav{
+    opacity: 0.9;
+    &-img{
+        max-width: 2rem;
+
+    }
+    &-a{
+        display:flex;
+        align-items:center;
+        justify-content: center;
+    }
+    &-li{
+      cursor:pointer;
+    }
+}

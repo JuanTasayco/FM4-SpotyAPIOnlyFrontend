@@ -1,0 +1,36 @@
+@use "src/_custom" as *;
+
+.Artists {
+
+    &-section--header{
+       
+        @include media-breakpoint-up(md){
+          
+        }
+    }
+
+
+    &-col{
+        &--description{
+        }
+    }
+
+    &-table {}
+
+    &-img {
+        max-width: 13rem;
+
+        &--header{
+        
+        }
+
+        &--table {
+            height: 4rem;
+            width: 4rem;
+        }
+
+    }
+
+
+
+}

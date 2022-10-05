@@ -1,0 +1,27 @@
+<header>
+    <nav class="Nav navbar navbar-expand-lg  navbar-dark bg-dark">
+        <div class="Nav-container container-fluid">
+            <a class="Nav-a navbar-brand gap-1" routerLink="/spotify">
+                <img src="assets/img/banner-ico.png" alt="spotyimg" class="Nav-img ">
+                <h5 class=" my-auto">Spotify</h5>
+            </a>
+            <button class="Nav-button navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#spotyNav">
+                <span class="Nav-span navbar-toggler-icon"></span>
+            </button>
+
+            <div class="Nav-collapse collapse navbar-collapse" id="spotyNav">
+                <ul class="Nav-ul navbar-nav d-flex  align-items-center">
+                    <li class="Nav-li nav-item" *ngFor="let ruta of rutas"><a class="nav-link"
+                            [routerLink]="ruta.ubicacion" routerLinkActive="active"
+                            [routerLinkActiveOptions]="{exact:true}">{{ruta.nombre}}</a></li>
+
+                    <!--    <li class="Nav-li nav-item"><a class="nav-link">Buscar</a> </li>
+                <li class="Nav-li nav-item"><a class="nav-link">About</a> </li> -->
+                </ul>
+            </div>
+
+
+        </div>
+    </nav>
+</header>
