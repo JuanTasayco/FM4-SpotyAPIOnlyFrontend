@@ -34,14 +34,12 @@ export class SpotifyService {
   async searchArtist(termino: string) {
     const obs = await this.getQuery(`search?q=${termino}&type=artist&limit=15`);
     return obs.pipe(map((data: any) => data.artists.items));
-
   }
 
   async getArtistByID(id: string) {
     const obs = await this.getQuery(`artists/${id}`);
     return obs;
   }
-
 
   async getTopTracks(id: string) {
     const obs = await this.getQuery(`artists/${id}/top-tracks?country=ES`);
