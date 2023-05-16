@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  tokenSpotify: "https://spotyapi-tasayco.herokuapp.com/spotify"
+  tokenSpotify: "https://pf4-spoty-api.vercel.app/"
 };
