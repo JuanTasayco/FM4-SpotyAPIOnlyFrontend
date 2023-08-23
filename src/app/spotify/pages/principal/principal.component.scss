@@ -1,2 +1,123 @@
-@use "src/_custom";
+@use "src/_custom" as *;
 
+.Menu {
+  height: 100%;
+  position: relative;
+
+  &-principal {
+    height: min(90%, 100dvh);
+    &--background {
+      background-repeat: no-repeat;
+      backdrop-filter: blur(10px);
+      background-size: cover;
+      background-position: center;
+      &::before {
+        content: "";
+        backdrop-filter: blur(10px);
+        inset: 0;
+        background-color: rgba(0, 0, 0, 0.5);
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        z-index: -1;
+      }
+    }
+  }
+
+  &-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &--artist {
+      @include media-breakpoint-down(md) {
+        height: 60%;
+      }
+    }
+    &--description {
+      flex-direction: column;
+      align-items: flex-start;
+      @include media-breakpoint-up(md) {
+        height: 100%;
+        margin-bottom: 5rem;
+      }
+
+      @include media-breakpoint-down(md) {
+        align-items: center;
+        justify-content: center;
+        height: 40%;
+      }
+    }
+  }
+
+  &-artist {
+    height: 100%;
+  }
+
+  &-row {
+    height: 100%;
+  }
+
+  &-description {
+    height: 100%;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 3rem 0;
+  }
+  &-h1 {
+    font-weight: bold;
+    font-size: clamp(1rem, 3vw, 4rem);
+    &--banner {
+      font-size: clamp(1rem, 2vw, 3rem);
+    }
+  }
+  &-h2 {
+    font-weight: bold;
+    font-size: clamp(0.9rem, 2.5vw, 3rem);
+  }
+
+  &-bar {
+    position: absolute;
+    top: 6%;
+    z-index: 10;
+    width: 70%;
+    border-radius: 0 12px 12px 0;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: rgba(10, 10, 10, 0.5);
+  }
+
+  &-controls {
+    top: 50%;
+    z-index: 11;
+    position: absolute;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 1rem;
+    background-color: rgba(0, 0, 0, 0.5);
+    @include media-breakpoint-up(md) {
+      margin: 0 3rem;
+    }
+    &:hover {
+      cursor: pointer;
+    }
+    &--leftCarrousel {
+      left: 0;
+    }
+
+    &--rightCarrousel {
+      right: 0;
+    }
+  }
+
+  &-button {
+    transition: transform .5s ease;
+    &:hover {
+      transform: scale(1.3);
+    }
+  }
+}

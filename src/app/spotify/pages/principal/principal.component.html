@@ -1,17 +1,109 @@
 <app-spinner *ngIf="SpinnerIsActive"></app-spinner>
 
-<div class="menu">
-   <div class="container mt-5">
-      <h2 class="display-2 fw-bold text-center">Nuestros Mayores Exitos, a la palma de tu mano con Spotify</h2>
-      <div class="w-50 m-auto my-4">
-         <p class="text-center fs-5">Busca tus canciones favoritas en nuestro buscador personalizado, elige y escucha los éxitos más recientes de tus artistas</p>
-      </div>
-      <div class="d-flex justify-content-center gap-4 mt-5">
-         <button class="btn btn-success" routerLink="/spotify/buscar">Buscar canciones</button>
-         <button class="btn btn-success"> <a class="text-decoration-none text-light" href="https://open.spotify.com/" target="d_blank">Ir a Spotify</a> </button>
-      </div>
-
-   </div>
-   
-   <app-cards [contenidos]="nuevasPeliculas"></app-cards>
+<div
+  (click)="moveLeftMenu()"
+  class="Menu-controls Menu-controls--leftCarrousel"
+>
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="40"
+    height="40"
+    fill="white"
+    class="shadow-lg rounded-5 border p-2"
+    viewBox="0 0 16 16"
+  >
+    <path
+      fill-rule="evenodd"
+      d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"
+    />
+  </svg>
 </div>
+<!-- Left -->
+
+<!--  right -->
+<div
+  (click)="moveRightMenu()"
+  class="Menu-controls Menu-controls--rightCarrousel"
+>
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="40"
+    height="40"
+    fill="white"
+    class="shadow-lg rounded-5 border p-2"
+    viewBox="0 0 16 16"
+  >
+    <path
+      fill-rule="evenodd"
+      d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"
+    />
+  </svg>
+</div>
+
+<div class="Menu">
+  <!-- <div class="Menu-bar text-light px-2 py-4">
+    <app-sgv-icons></app-sgv-icons>
+    <h1 class="Menu-h1 Menu-h1--banner ms-5">Los Mayores Exitos del Momento</h1>
+  </div> -->
+  <div
+    *ngIf="artistas.length > 0"
+    [ngStyle]="{
+      'background-image': 'url(' + artistas[posArray].images[0].url + ')'
+    }"
+    class="Menu-principal Menu-principal--background"
+  >
+    <div class="Menu-artist container">
+      <!-- artista descriptions -->
+      <div class="Menu-row Menu-row--background row">
+        <div
+          class="Menu-content Menu-content--description col-md-6 my-auto order-md-2"
+        >
+          <h1 class="Menu-h1 text-light">{{ artistas[posArray].name }}</h1>
+          <h2 class="Menu-h2 text-light">
+            -{{ artistas[posArray].artists[0].name }}
+          </h2>
+          <button class="Menu-button btn btn-success mt-4 mx-auto">
+            Escuchar ahora
+          </button>
+        </div>
+        <div class="Menu-content Menu-content--artist col-md-6 p-5 order-md-1">
+          <img
+            [src]="artistas[posArray].images[0].url"
+            alt="principal"
+            class="img-fluid m-auto"
+          />
+        </div>
+      </div>
+      <!-- barra de canciones -->
+
+      <div class="Menu-cards h-100">
+        <app-cards [contenidos]="artistas"></app-cards>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--   <div class="Menu-container container mt-5">
+    <h2 class="Menu-h2 display-2 fw-bold text-center">
+      Nuestros Mayores Exitos, a la palma de tu mano con Spotify
+    </h2>
+    <div class="w-50 m-auto my-4">
+      <p class="text-center fs-5">
+        Busca tus canciones favoritas en nuestro buscador personalizado, elige y
+        escucha los éxitos más recientes de tus artistas
+      </p>
+    </div>
+    <div class="d-flex justify-content-center gap-4 mt-5">
+      <button class="btn btn-success" routerLink="/spotify/buscar">
+        Buscar canciones
+      </button>
+      <button class="btn btn-success">
+        <a
+          class="text-decoration-none text-light"
+          href="https://open.spotify.com/"
+          target="d_blank"
+          >Ir a Spotify</a
+        >
+      </button>
+    </div>
+  </div> -->

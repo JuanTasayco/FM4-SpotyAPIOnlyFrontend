@@ -1,20 +1,34 @@
 <div class="Card container p-5">
-    <div class="Card-row row ">
-        <div class="Card-col col-md-4 mb-4 shadow-lg" *ngFor="let contenido of contenidos">
-            <div class="Card-body card" [routerLink]="['/spotify/artista/',obtenerTipo(contenido)]">
-                <img [src]="contenido.images[0]?.url | img" alt="" class="Card-img img-fluid rounded-3">
-                <div class="Card-overlay card-body">
-
-                    <div class="Card-content card-title"> <button
-                            class="Card-button btn btn-outline-light">{{contenido.name | titlecase}}</button>
-                    </div>
-                    <div class="Card-content card-title">
-                        <button class="btn btn-success" *ngFor="let artista of contenido.artists"> {{artista.name |
-                            titlecase}}</button>
-                    </div>
-
-                </div>
-            </div>
+  <div class="Card-row row">
+    <div
+      class="Card-col col-md-4 mb-4 shadow-lg"
+      *ngFor="let contenido of contenidos"
+    >
+      <div
+        class="Card-body card"
+        [routerLink]="['/spotify/artista/', obtenerTipo(contenido)]"
+      >
+        <img
+          [src]="contenido.images[0]?.url | img"
+          alt=""
+          class="Card-img img-fluid rounded-3"
+        />
+        <div class="Card-overlay card-body">
+          <div class="Card-content card-title">
+            <button class="Card-button btn btn-outline-light">
+              {{ contenido.name | titlecase }}
+            </button>
+          </div>
+          <div class="Card-content card-title">
+            <button
+              class="btn btn-success"
+              *ngFor="let artista of contenido.artists"
+            >
+              {{ artista.name | titlecase }}
+            </button>
+          </div>
         </div>
+      </div>
     </div>
+  </div>
 </div>

@@ -1,18 +1,20 @@
 @use "src/custom" as *;
 
-
-.Nav{
-    opacity: 0.9;
-    &-img{
-        max-width: 2rem;
-
-    }
-    &-a{
-        display:flex;
-        align-items:center;
-        justify-content: center;
-    }
-    &-li{
-      cursor:pointer;
-    }
+.Nav {
+  position: absolute;
+  top: 0;
+  z-index: 5;
+  opacity: 0.9;
+  width: 100%;
+  &-img {
+    max-width: 2rem;
+  }
+  &-a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  &-li {
+    cursor: pointer;
+  }
 }

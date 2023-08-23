@@ -13,6 +13,7 @@ import { SpinnerComponent } from './components/spinner/spinner.component';
 import { ImgPipe } from './pipes/img.pipe';
 import { ArtistaComponent } from './pages/artista/artista.component';
 import { DomseguroPipe } from './pipes/domseguro.pipe';
+import { SgvIconsComponent } from './components/sgv-icons/sgv-icons.component';
 
 
 
@@ -25,7 +26,8 @@ import { DomseguroPipe } from './pipes/domseguro.pipe';
     ImgPipe,
     DomseguroPipe,
     SpinnerComponent,
-    ArtistaComponent
+    ArtistaComponent,
+    SgvIconsComponent
   ],
   imports: [
     CommonModule,
