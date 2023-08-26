@@ -4,7 +4,4 @@
 @use "./app/spotify/pages/buscar/buscar.component";
 @use "./app/spotify/pages/principal/principal.component";
 @use "./app/spotify/pages/artista/artista.component";
-
-body {
-  background-color: #121011;
-}
+@use "./app/spotify/components/spinner/spinner.component";

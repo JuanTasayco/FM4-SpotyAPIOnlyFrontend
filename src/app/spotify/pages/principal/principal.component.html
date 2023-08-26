@@ -1,15 +1,16 @@
 <app-spinner *ngIf="SpinnerIsActive"></app-spinner>
 
-<div
+<button
   (click)="moveLeftMenu()"
-  class="Menu-controls Menu-controls--leftCarrousel"
+  class="Menu-controls Menu-controls--leftCarrousel btn"
+  [disabled]="desactivarControles"
 >
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    width="40"
-    height="40"
+    width="50"
+    height="50"
     fill="white"
-    class="shadow-lg rounded-5 border p-2"
+    class="shadow-lg rounded-5 p-3 Menu-svg"
     viewBox="0 0 16 16"
   >
     <path
@@ -17,20 +18,21 @@
       d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"
     />
   </svg>
-</div>
+</button>
 <!-- Left -->
 
 <!--  right -->
-<div
+<button
   (click)="moveRightMenu()"
-  class="Menu-controls Menu-controls--rightCarrousel"
+  class="Menu-controls Menu-controls--rightCarrousel btn"
+  [disabled]="desactivarControles"
 >
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    width="40"
-    height="40"
+    width="50"
+    height="50"
     fill="white"
-    class="shadow-lg rounded-5 border p-2"
+    class="shadow-lg rounded-5 p-3 Menu-svg"
     viewBox="0 0 16 16"
   >
     <path
@@ -38,13 +40,9 @@
       d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"
     />
   </svg>
-</div>
+</button>
 
 <div class="Menu">
-  <!-- <div class="Menu-bar text-light px-2 py-4">
-    <app-sgv-icons></app-sgv-icons>
-    <h1 class="Menu-h1 Menu-h1--banner ms-5">Los Mayores Exitos del Momento</h1>
-  </div> -->
   <div
     *ngIf="artistas.length > 0"
     [ngStyle]="{
@@ -55,9 +53,15 @@
     <div class="Menu-artist container">
       <!-- artista descriptions -->
       <div class="Menu-row Menu-row--background row">
-        <div
-          class="Menu-content Menu-content--description col-md-6 my-auto order-md-2"
-        >
+        <div class="Menu-content Menu-content--artist col-md-6 p-5">
+          <img
+            #imagenContenedor
+            [src]="artistas[posArray].images[0].url"
+            alt="principal"
+            class="img-fluid m-auto shadow-lg rounded-3"
+          />
+        </div>
+        <div class="Menu-content Menu-content--description col-md-6 my-auto">
           <h1 class="Menu-h1 text-light">{{ artistas[posArray].name }}</h1>
           <h2 class="Menu-h2 text-light">
             -{{ artistas[posArray].artists[0].name }}
@@ -66,44 +70,37 @@
             Escuchar ahora
           </button>
         </div>
-        <div class="Menu-content Menu-content--artist col-md-6 p-5 order-md-1">
-          <img
-            [src]="artistas[posArray].images[0].url"
-            alt="principal"
-            class="img-fluid m-auto"
-          />
-        </div>
       </div>
       <!-- barra de canciones -->
+    </div>
 
-      <div class="Menu-cards h-100">
-        <app-cards [contenidos]="artistas"></app-cards>
+    <div class="Menu-contenedor2 bg-dark">
+      <div class="Menu-descriptions container h-100">
+        <div class="Menu-row Menu-row--info row">
+          <div class="Menu-info col-md-6 p-5 text-light">
+            <h2 class="Menu-h2 Menu-h2--contenedor2 mb-5 text-start">
+              Que podrás hacer aquí ?
+            </h2>
+            <p class="Menu-p Menu-p--contenedor2">
+              Esta página recopila los últimos éxitos más sonados de Spotify,
+              también puedes buscar tus artitas favoritas y escuchar su música
+              más sonada desde aquí, esta página está hecha sin fines de lucro,
+              está construida para de alguna forma u otra compartir la buena
+              música que contiene Spotify.
+            </p>
+          </div>
+          <div class="Menu-imgSec col-md-6">
+            <img
+              [src]="artistas[11].images[0].url"
+              alt="imgArtista"
+              class="Menu-img Menu-img--contenedor2 img-fluid rounded-3 shadow-lg"
+            />
+          </div>
+        </div>
       </div>
+    </div>
+    <div class="Menu-cards bg-dark position-relative">
+      <app-cards [contenidos]="artistas"></app-cards>
     </div>
   </div>
 </div>
-
-<!--   <div class="Menu-container container mt-5">
-    <h2 class="Menu-h2 display-2 fw-bold text-center">
-      Nuestros Mayores Exitos, a la palma de tu mano con Spotify
-    </h2>
-    <div class="w-50 m-auto my-4">
-      <p class="text-center fs-5">
-        Busca tus canciones favoritas en nuestro buscador personalizado, elige y
-        escucha los éxitos más recientes de tus artistas
-      </p>
-    </div>
-    <div class="d-flex justify-content-center gap-4 mt-5">
-      <button class="btn btn-success" routerLink="/spotify/buscar">
-        Buscar canciones
-      </button>
-      <button class="btn btn-success">
-        <a
-          class="text-decoration-none text-light"
-          href="https://open.spotify.com/"
-          target="d_blank"
-          >Ir a Spotify</a
-        >
-      </button>
-    </div>
-  </div> -->

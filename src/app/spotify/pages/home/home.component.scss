@@ -1,6 +1,7 @@
-@use "src/_custom";
+@use "src/_custom" as *;
 
 html,
 body {
-  height: 100%;
+  height: 100dvh;
+  background-color: $dark;
 }

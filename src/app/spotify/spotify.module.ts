@@ -15,8 +15,6 @@ import { ArtistaComponent } from './pages/artista/artista.component';
 import { DomseguroPipe } from './pipes/domseguro.pipe';
 import { SgvIconsComponent } from './components/sgv-icons/sgv-icons.component';
 
-
-
 @NgModule({
   declarations: [
     HomeComponent,
@@ -27,13 +25,7 @@ import { SgvIconsComponent } from './components/sgv-icons/sgv-icons.component';
     DomseguroPipe,
     SpinnerComponent,
     ArtistaComponent,
-    SgvIconsComponent
   ],
-  imports: [
-    CommonModule,
-    SpotifyRoutingModule,
-    SharedModule,
-    FormsModule
-  ]
+  imports: [SpotifyRoutingModule, SharedModule, FormsModule, CommonModule],
 })
-export class SpotifyModule { }
+export class SpotifyModule {}
