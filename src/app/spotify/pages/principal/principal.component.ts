@@ -11,6 +11,7 @@ import {
 import { SpotifyService } from '../../services/spotify.service';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
 @Component({
   selector: 'app-principal',
   templateUrl: './principal.component.html',
@@ -64,41 +65,27 @@ export class PrincipalComponent implements OnInit, AfterViewInit {
     });
   }
 
+  @ViewChild('contenedorPrincipal')
+  contenedorPrincipal!: ElementRef<HTMLDivElement>;
   animationsScrollingContainers() {
     if (this.artistas.length > 0) {
       this.cdr.detectChanges();
-      const tl = gsap.timeline({});
-      this.containersScroll.forEach(
-        ({ nativeElement: contenedor }: ElementRef, index, arreglo) => {
-          tl.to(contenedor, {
-            xPercent: -100,
-            ease: 'none',
-            scrollTrigger: {
-              trigger: contenedor,
-              markers: true,
-              start: 'top top',
-              end: `bottom start`,
-              pin: true,
-              scrub: true,
-              /*  horizontal: true, */
-            },
-          });
-        }
-      );
-      /*    this.containersScroll.forEach((element, index: number) => {
-        if (index == 0) {
-          tl.from(element.nativeElement, {
-            y: -100,
-            opacity: 0,
-          });
-        } else if (index == 1) {
-          tl.from(element.nativeElement, {
-            y: 100,
-            opacity: 0,
-          });
-        } else {
-        }
-      }); */
+      const distanciaContenedor =
+        this.contenedorPrincipal.nativeElement.offsetWidth;
+      let desplazamiento: any = distanciaContenedor - window.innerWidth;
+      gsap.to(this.contenedorPrincipal.nativeElement, {
+        x: -desplazamiento,
+        duration: 3,
+        scrollTrigger: {
+          trigger: this.contenedorPrincipal.nativeElement,
+          scrub: true,
+          markers: true,
+          start: 'top top',
+          end: '+=' + desplazamiento,
+          pin: true,
+          anticipatePin: 1,
+        },
+      });
     }
   }
 

@@ -1,55 +1,54 @@
 <app-spinner *ngIf="SpinnerIsActive"></app-spinner>
 
-<button
-  (click)="moveLeftMenu()"
-  class="Menu-controls Menu-controls--leftCarrousel btn"
-  [disabled]="desactivarControles"
->
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    width="50"
-    height="50"
-    fill="white"
-    class="shadow-lg rounded-5 p-3 Menu-svg"
-    viewBox="0 0 16 16"
-  >
-    <path
-      fill-rule="evenodd"
-      d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"
-    />
-  </svg>
-</button>
-<!-- Left -->
-
-<!--  right -->
-<button
-  (click)="moveRightMenu()"
-  class="Menu-controls Menu-controls--rightCarrousel btn"
-  [disabled]="desactivarControles"
->
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    width="50"
-    height="50"
-    fill="white"
-    class="shadow-lg rounded-5 p-3 Menu-svg"
-    viewBox="0 0 16 16"
-  >
-    <path
-      fill-rule="evenodd"
-      d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"
-    />
-  </svg>
-</button>
-
 <div class="Menu" *ngIf="artistas.length > 0">
-  <div class="Menu-principal">
+  <button
+    (click)="moveLeftMenu()"
+    class="Menu-controls Menu-controls--leftCarrousel btn"
+    [disabled]="desactivarControles"
+  >
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="50"
+      height="50"
+      fill="white"
+      class="shadow-lg rounded-5 p-3 Menu-svg"
+      viewBox="0 0 16 16"
+    >
+      <path
+        fill-rule="evenodd"
+        d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"
+      />
+    </svg>
+  </button>
+  <!-- Left -->
+
+  <!--  right -->
+  <button
+    (click)="moveRightMenu()"
+    class="Menu-controls Menu-controls--rightCarrousel btn"
+    [disabled]="desactivarControles"
+  >
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="50"
+      height="50"
+      fill="white"
+      class="shadow-lg rounded-5 p-3 Menu-svg"
+      viewBox="0 0 16 16"
+    >
+      <path
+        fill-rule="evenodd"
+        d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"
+      />
+    </svg>
+  </button>
+  <div #contenedorPrincipal class="Menu-principal">
     <div
       #containerScroll
-      class="Menu-artist Menu-scrolling Menu-artist--background"
       [ngStyle]="{
         'background-image': 'url(' + artistas[posArray].images[0].url + ')'
       }"
+      class="Menu-container Menu-artist--background"
     >
       <!-- artista descriptions -->
       <div class="Menu-row Menu-row--background row">
@@ -74,10 +73,7 @@
       <!-- barra de canciones -->
     </div>
 
-    <div
-      #containerScroll
-      class="Menu-contenedor2 Menu-scrolling bg-dark m-auto"
-    >
+    <div #containerScroll class="Menu-container">
       <div class="Menu-descriptions container h-100">
         <div class="Menu-row Menu-row--info row">
           <div class="Menu-info col-md-6 p-5 text-light">
@@ -102,8 +98,8 @@
         </div>
       </div>
     </div>
-    <div #containerScroll class="Menu-cards Menu-scrolling bg-dark">
-      <!--  <app-cards [contenidos]="artistas"></app-cards> -->
+    <div #containerScroll class="Menu-container">
+      <app-cards [contenidos]="artistas"></app-cards>
     </div>
   </div>
 </div>

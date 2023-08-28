@@ -4,23 +4,26 @@
   height: 100%;
   position: relative;
   box-sizing: border-box;
+  width: 100%;
+  /*  overflow: hidden; */
   &-principal {
     height: 100%;
     width: 300%;
     display: flex;
-    flex-wrap: nowrap;
     box-sizing: border-box;
+    padding: 0;
+    margin: 0;
   }
-
-  &-scrolling {
+  &-container {
     position: relative;
     height: 100%;
     width: 100%;
     box-sizing: border-box;
   }
+
   &-artist {
-    border: 2px solid red;
     &--background {
+      width: 100%;
       background-repeat: no-repeat;
       backdrop-filter: blur(10px);
       background-size: cover;
@@ -36,14 +39,6 @@
         z-index: -1;
       }
     }
-  }
-  &-contenedor2 {
-    border: 2px solid yellow;
-  }
-
-  &-cards {
-    position: relative;
-    border: 2px solid yellow;
   }
 
   &-content {
