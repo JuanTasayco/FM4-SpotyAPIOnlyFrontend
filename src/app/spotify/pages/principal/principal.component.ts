@@ -1,9 +1,12 @@
 import {
   AfterViewInit,
+  ChangeDetectorRef,
   Component,
   ElementRef,
   OnInit,
+  QueryList,
   ViewChild,
+  ViewChildren,
 } from '@angular/core';
 import { SpotifyService } from '../../services/spotify.service';
 import { gsap } from 'gsap';
@@ -20,6 +23,11 @@ export class PrincipalComponent implements OnInit, AfterViewInit {
   desactivarControles: boolean = false;
 
   @ViewChild('imagenContenedor') imagenArtista!: ElementRef<HTMLElement>;
+  @ViewChildren('containerScroll') containersScroll!: QueryList<ElementRef>;
+
+  ngAfterViewInit(): void {
+    /* logica para scrollanimations de contenedores */
+  }
 
   ngOnInit(): void {
     this.SpinnerIsActive = true;
@@ -27,6 +35,7 @@ export class PrincipalComponent implements OnInit, AfterViewInit {
       observ.subscribe((albums: any) => {
         this.SpinnerIsActive = false;
         this.artistas = albums;
+        this.animationsScrollingContainers();
       });
     });
     gsap.registerPlugin(ScrollTrigger);
@@ -55,9 +64,46 @@ export class PrincipalComponent implements OnInit, AfterViewInit {
     });
   }
 
-  constructor(private spotiService: SpotifyService) {}
-  ngAfterViewInit(): void {
-    const tl = gsap.timeline({});
-    tl.to(document.body, {});
+  animationsScrollingContainers() {
+    if (this.artistas.length > 0) {
+      this.cdr.detectChanges();
+      const tl = gsap.timeline({});
+      this.containersScroll.forEach(
+        ({ nativeElement: contenedor }: ElementRef, index, arreglo) => {
+          tl.to(contenedor, {
+            xPercent: -100,
+            ease: 'none',
+            scrollTrigger: {
+              trigger: contenedor,
+              markers: true,
+              start: 'top top',
+              end: `bottom start`,
+              pin: true,
+              scrub: true,
+              /*  horizontal: true, */
+            },
+          });
+        }
+      );
+      /*    this.containersScroll.forEach((element, index: number) => {
+        if (index == 0) {
+          tl.from(element.nativeElement, {
+            y: -100,
+            opacity: 0,
+          });
+        } else if (index == 1) {
+          tl.from(element.nativeElement, {
+            y: 100,
+            opacity: 0,
+          });
+        } else {
+        }
+      }); */
+    }
   }
+
+  constructor(
+    private spotiService: SpotifyService,
+    private cdr: ChangeDetectorRef
+  ) {}
 }

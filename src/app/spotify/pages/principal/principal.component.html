@@ -42,15 +42,15 @@
   </svg>
 </button>
 
-<div class="Menu">
-  <div
-    *ngIf="artistas.length > 0"
-    [ngStyle]="{
-      'background-image': 'url(' + artistas[posArray].images[0].url + ')'
-    }"
-    class="Menu-principal Menu-principal--background"
-  >
-    <div class="Menu-artist container">
+<div class="Menu" *ngIf="artistas.length > 0">
+  <div class="Menu-principal">
+    <div
+      #containerScroll
+      class="Menu-artist Menu-scrolling Menu-artist--background"
+      [ngStyle]="{
+        'background-image': 'url(' + artistas[posArray].images[0].url + ')'
+      }"
+    >
       <!-- artista descriptions -->
       <div class="Menu-row Menu-row--background row">
         <div class="Menu-content Menu-content--artist col-md-6 p-5">
@@ -74,7 +74,10 @@
       <!-- barra de canciones -->
     </div>
 
-    <div class="Menu-contenedor2 bg-dark">
+    <div
+      #containerScroll
+      class="Menu-contenedor2 Menu-scrolling bg-dark m-auto"
+    >
       <div class="Menu-descriptions container h-100">
         <div class="Menu-row Menu-row--info row">
           <div class="Menu-info col-md-6 p-5 text-light">
@@ -99,8 +102,8 @@
         </div>
       </div>
     </div>
-    <div class="Menu-cards bg-dark position-relative">
-      <app-cards [contenidos]="artistas"></app-cards>
+    <div #containerScroll class="Menu-cards Menu-scrolling bg-dark">
+      <!--  <app-cards [contenidos]="artistas"></app-cards> -->
     </div>
   </div>
 </div>

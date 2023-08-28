@@ -3,9 +3,23 @@
 .Menu {
   height: 100%;
   position: relative;
-
+  box-sizing: border-box;
   &-principal {
     height: 100%;
+    width: 300%;
+    display: flex;
+    flex-wrap: nowrap;
+    box-sizing: border-box;
+  }
+
+  &-scrolling {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  &-artist {
+    border: 2px solid red;
     &--background {
       background-repeat: no-repeat;
       backdrop-filter: blur(10px);
@@ -23,6 +37,14 @@
       }
     }
   }
+  &-contenedor2 {
+    border: 2px solid yellow;
+  }
+
+  &-cards {
+    position: relative;
+    border: 2px solid yellow;
+  }
 
   &-content {
     display: flex;
@@ -30,10 +52,12 @@
     align-items: center;
 
     &--artist {
+      height: 100%;
       @include media-breakpoint-down(md) {
         height: 60%;
       }
     }
+
     &--description {
       flex-direction: column;
       align-items: flex-start;
@@ -48,10 +72,6 @@
         height: 40%;
       }
     }
-  }
-
-  &-artist {
-    height: 100%;
   }
 
   &-row {
