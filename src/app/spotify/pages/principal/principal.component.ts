@@ -70,22 +70,6 @@ export class PrincipalComponent implements OnInit, AfterViewInit {
   animationsScrollingContainers() {
     if (this.artistas.length > 0) {
       this.cdr.detectChanges();
-      const distanciaContenedor =
-        this.contenedorPrincipal.nativeElement.offsetWidth;
-      let desplazamiento: any = distanciaContenedor - window.innerWidth;
-      gsap.to(this.contenedorPrincipal.nativeElement, {
-        x: -desplazamiento,
-        duration: 3,
-        scrollTrigger: {
-          trigger: this.contenedorPrincipal.nativeElement,
-          scrub: true,
-          markers: true,
-          start: 'top top',
-          end: '+=' + desplazamiento,
-          pin: true,
-          anticipatePin: 1,
-        },
-      });
     }
   }
 

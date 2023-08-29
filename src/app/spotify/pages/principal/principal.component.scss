@@ -8,9 +8,7 @@
   /*  overflow: hidden; */
   &-principal {
     height: 100%;
-    width: 300%;
-    display: flex;
-    box-sizing: border-box;
+
     padding: 0;
     margin: 0;
   }
@@ -19,6 +17,15 @@
     height: 100%;
     width: 100%;
     box-sizing: border-box;
+    &--animation {
+      border: 2px solid red;
+      height: 100%;
+    }
+  }
+
+  &-row {
+    padding: 0;
+    margin: 0;
   }
 
   &-artist {
@@ -169,6 +176,10 @@
       @include media-breakpoint-down(md) {
         max-width: 12rem;
       }
+    }
+
+    &--animation {
+      border: 2px solid red;
     }
   }
 

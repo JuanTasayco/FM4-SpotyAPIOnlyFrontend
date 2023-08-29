@@ -1,48 +1,17 @@
 <app-spinner *ngIf="SpinnerIsActive"></app-spinner>
 
 <div class="Menu" *ngIf="artistas.length > 0">
-  <button
-    (click)="moveLeftMenu()"
-    class="Menu-controls Menu-controls--leftCarrousel btn"
-    [disabled]="desactivarControles"
-  >
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="50"
-      height="50"
-      fill="white"
-      class="shadow-lg rounded-5 p-3 Menu-svg"
-      viewBox="0 0 16 16"
-    >
-      <path
-        fill-rule="evenodd"
-        d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"
-      />
-    </svg>
-  </button>
-  <!-- Left -->
-
-  <!--  right -->
-  <button
-    (click)="moveRightMenu()"
-    class="Menu-controls Menu-controls--rightCarrousel btn"
-    [disabled]="desactivarControles"
-  >
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="50"
-      height="50"
-      fill="white"
-      class="shadow-lg rounded-5 p-3 Menu-svg"
-      viewBox="0 0 16 16"
-    >
-      <path
-        fill-rule="evenodd"
-        d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"
-      />
-    </svg>
-  </button>
   <div #contenedorPrincipal class="Menu-principal">
+    <div class="Menu-container Menu-container--animation">
+      <div class="">
+        <img src="assets/img/banner-ico.png" alt="" class="Menu-img Menu-img--animation" />
+        <h2 class="Menu-h2 text-light display-1">Sumérgete en el sonido.</h2>
+        <button class="Menu-button btn btn-danger py-3 rounded-5 px-3">
+          Pruébalo gratis durante 1 mes*
+        </button>
+      </div>
+    </div>
+
     <div
       #containerScroll
       [ngStyle]="{
@@ -52,7 +21,7 @@
     >
       <!-- artista descriptions -->
       <div class="Menu-row Menu-row--background row">
-        <div class="Menu-content Menu-content--artist col-md-6 p-5">
+        <div class="Menu-content Menu-content--artist col-md-6 p-5 m-0">
           <img
             #imagenContenedor
             [src]="artistas[posArray].images[0].url"
@@ -60,7 +29,7 @@
             class="img-fluid m-auto shadow-lg rounded-3"
           />
         </div>
-        <div class="Menu-content Menu-content--description col-md-6 my-auto">
+        <div class="Menu-content Menu-content--description col-md-6">
           <h1 class="Menu-h1 text-light">{{ artistas[posArray].name }}</h1>
           <h2 class="Menu-h2 text-light">
             -{{ artistas[posArray].artists[0].name }}
@@ -70,7 +39,49 @@
           </button>
         </div>
       </div>
-      <!-- barra de canciones -->
+      <!-- botones desplazamiento -->
+
+      <button
+        (click)="moveLeftMenu()"
+        class="Menu-controls Menu-controls--leftCarrousel btn"
+        [disabled]="desactivarControles"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="50"
+          height="50"
+          fill="white"
+          class="shadow-lg rounded-5 p-3 Menu-svg"
+          viewBox="0 0 16 16"
+        >
+          <path
+            fill-rule="evenodd"
+            d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"
+          />
+        </svg>
+      </button>
+      <!-- Left -->
+
+      <!--  right -->
+      <button
+        (click)="moveRightMenu()"
+        class="Menu-controls Menu-controls--rightCarrousel btn"
+        [disabled]="desactivarControles"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="50"
+          height="50"
+          fill="white"
+          class="shadow-lg rounded-5 p-3 Menu-svg"
+          viewBox="0 0 16 16"
+        >
+          <path
+            fill-rule="evenodd"
+            d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"
+          />
+        </svg>
+      </button>
     </div>
 
     <div #containerScroll class="Menu-container">
