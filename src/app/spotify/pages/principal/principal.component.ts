@@ -150,9 +150,21 @@ export class PrincipalComponent implements OnInit, AfterViewInit {
 
   @ViewChild('contenedor3') thirdContainer!: ElementRef<HTMLElement>;
   @ViewChild('contenedor4') fourContainer!: ElementRef<HTMLElement>;
-
+  @ViewChildren('menuContenedor3') containers3!: QueryList<
+    ElementRef<HTMLElement>
+  >;
   animationScrollThirdContainer() {
     setTimeout(() => {
+      this.containers3.forEach((elemento, index) => {
+        gsap.to(elemento.nativeElement, {
+          y: '100%',
+          scrollTrigger: {
+            scrub: 1,
+            trigger: elemento.nativeElement,
+          },
+        });
+      });
+
       const fourContainerAnimation = gsap.to(this.fourContainer.nativeElement, {
         y: `-${this.fourContainer.nativeElement.offsetHeight}`,
         duration: 4,
@@ -166,7 +178,6 @@ export class PrincipalComponent implements OnInit, AfterViewInit {
         pin: true,
         pinSpacing: false,
         animation: fourContainerAnimation,
-        snap: 1,
       });
     }, 200);
   }
