@@ -3,6 +3,7 @@ import {
   ChangeDetectorRef,
   Component,
   ElementRef,
+  HostListener,
   OnInit,
   QueryList,
   ViewChild,
@@ -11,7 +12,6 @@ import {
 import { SpotifyService } from '../../services/spotify.service';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-
 @Component({
   selector: 'app-principal',
   templateUrl: './principal.component.html',
@@ -24,7 +24,6 @@ export class PrincipalComponent implements OnInit, AfterViewInit {
   desactivarControles: boolean = false;
 
   @ViewChild('imagenContenedor') imagenArtista!: ElementRef<HTMLElement>;
-  @ViewChildren('containerScroll') containersScroll!: QueryList<ElementRef>;
 
   ngAfterViewInit(): void {
     /* logica para scrollanimations de contenedores */
@@ -36,7 +35,12 @@ export class PrincipalComponent implements OnInit, AfterViewInit {
       observ.subscribe((albums: any) => {
         this.SpinnerIsActive = false;
         this.artistas = albums;
-        this.animationsScrollingContainers();
+        if (this.artistas.length > 0) {
+          this.cdr.detectChanges();
+          this.firstAnimationForPresentPage();
+          this.animationScrollFirsContainer();
+          this.animationScrollSecondContainer();
+        }
       });
     });
     gsap.registerPlugin(ScrollTrigger);
@@ -65,12 +69,60 @@ export class PrincipalComponent implements OnInit, AfterViewInit {
     });
   }
 
-  @ViewChild('contenedorPrincipal')
-  contenedorPrincipal!: ElementRef<HTMLDivElement>;
-  animationsScrollingContainers() {
-    if (this.artistas.length > 0) {
-      this.cdr.detectChanges();
-    }
+  @ViewChild('imgPrincipal') imgSpotify!: ElementRef<HTMLElement>;
+  @ViewChildren('contenidoPrincipal') contenidoP!: QueryList<ElementRef>;
+  @HostListener('window:resize', [])
+  firstAnimationForPresentPage() {
+    const tl = gsap.timeline({});
+
+    gsap.set(this.imgSpotify.nativeElement, {
+      y: '400%',
+      scale: window.innerWidth < 576 ? 2 : 4,
+      opacity: 0,
+    });
+
+    tl.to(this.imgSpotify.nativeElement, {
+      duration: 0.8,
+      opacity: 1,
+    }).to(this.imgSpotify.nativeElement, {
+      y: '0',
+      scale: 1,
+      duration: 1,
+    });
+
+    this.contenidoP.forEach(({ nativeElement: elemento }: ElementRef) => {
+      gsap.from(elemento, {
+        delay: 1.2,
+        opacity: 0,
+        y: '200%',
+        duration: 1,
+      });
+    });
+  }
+
+  /* animation firstContainer (front)*/
+  @ViewChild('contenedor1') firstContainer!: ElementRef<HTMLElement>;
+  animationScrollFirsContainer() {
+    const phones = gsap.utils.toArray('.phoneS');
+    const phonesAnimation = gsap.to(phones, {
+      y: '-100',
+    });
+    /* ideal segun yo 150 mobile, 100 normal para el start */
+    ScrollTrigger.create({
+      trigger: this.firstContainer.nativeElement,
+      start: `-150% 40%`,
+      end: 'bottom 15%',
+      animation: phonesAnimation,
+      scrub: true,
+    });
+  }
+
+  /* animation secondContainer (albums) */
+  @ViewChild('contenedor2') secondContainer!: ElementRef<HTMLElement>;
+  animationScrollSecondContainer() {
+    ScrollTrigger.create({
+      
+    })
   }
 
   constructor(

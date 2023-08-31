@@ -1,19 +1,50 @@
 <app-spinner *ngIf="SpinnerIsActive"></app-spinner>
 
 <div class="Menu" *ngIf="artistas.length > 0">
-  <div #contenedorPrincipal class="Menu-principal">
+  <div class="Menu-principal">
     <div class="Menu-container Menu-container--animation">
-      <div class="">
-        <img src="assets/img/banner-ico.png" alt="" class="Menu-img Menu-img--animation" />
-        <h2 class="Menu-h2 text-light display-1">Sumérgete en el sonido.</h2>
-        <button class="Menu-button btn btn-danger py-3 rounded-5 px-3">
-          Pruébalo gratis durante 1 mes*
-        </button>
+      <div class="Menu-hero">
+        <img
+          #imgPrincipal
+          src="assets/img/banner-ico.png"
+          alt=""
+          class="Menu-img Menu-img--animation"
+        />
+
+        <div #contenidoPrincipal class="text-center">
+          <h2 class="Menu-h2 Menu-h2--hero">Sumérgete en el sonido.</h2>
+          <button class="Menu-button btn btn-danger py-3 rounded-5 px-3">
+            Busca tu música favorita
+          </button>
+        </div>
       </div>
     </div>
 
+    <!-- menu aditional banner -->
+    <div #contenedor1 #contenidoPrincipal class="Menu-banner overflow-hidden">
+      <img
+        #imgPhone
+        src="assets/phone3.png"
+        alt="phone1"
+        class="Menu-img Menu-img--phone phoneS"
+      />
+      <img
+        #imgPhone
+        src="assets/phone2.png"
+        alt="phone2"
+        class="Menu-img Menu-img--phone"
+      />
+      <img
+        #imgPhone
+        src="assets/phone3.png"
+        alt="phone3"
+        class="Menu-img Menu-img--phone phoneS"
+      />
+    </div>
+
+    <!-- primer contenedor -->
     <div
-      #containerScroll
+      #contenedor2
       [ngStyle]="{
         'background-image': 'url(' + artistas[posArray].images[0].url + ')'
       }"
@@ -30,10 +61,8 @@
           />
         </div>
         <div class="Menu-content Menu-content--description col-md-6">
-          <h1 class="Menu-h1 text-light">{{ artistas[posArray].name }}</h1>
-          <h2 class="Menu-h2 text-light">
-            -{{ artistas[posArray].artists[0].name }}
-          </h2>
+          <h1 class="Menu-h1">{{ artistas[posArray].name }}</h1>
+          <h2 class="Menu-h2">-{{ artistas[posArray].artists[0].name }}</h2>
           <button class="Menu-button btn btn-success mt-4 mx-auto">
             Escuchar ahora
           </button>
@@ -84,7 +113,8 @@
       </button>
     </div>
 
-    <div #containerScroll class="Menu-container">
+    <!-- segundo contenedor -->
+    <div #contenedor3 class="Menu-container">
       <div class="Menu-descriptions container h-100">
         <div class="Menu-row Menu-row--info row">
           <div class="Menu-info col-md-6 p-5 text-light">
@@ -109,7 +139,9 @@
         </div>
       </div>
     </div>
-    <div #containerScroll class="Menu-container">
+
+    <!-- tercer contenedor -->
+    <div #contenedor4 class="Menu-container">
       <app-cards [contenidos]="artistas"></app-cards>
     </div>
   </div>
