@@ -23,8 +23,6 @@ export class PrincipalComponent implements OnInit, AfterViewInit {
   /* controlo la activacion de botones a cuando termina de pasar una imagen, porque si el usuario da clicks muy rapido la animación de gsap se interrumpe */
   desactivarControles: boolean = false;
 
-  @ViewChild('imagenContenedor') imagenArtista!: ElementRef<HTMLElement>;
-
   ngAfterViewInit(): void {
     /* logica para scrollanimations de contenedores */
   }
@@ -40,6 +38,7 @@ export class PrincipalComponent implements OnInit, AfterViewInit {
           this.firstAnimationForPresentPage();
           this.animationScrollFirsContainer();
           this.animationScrollSecondContainer();
+          this.animationScrollThirdContainer();
         }
       });
     });
@@ -60,6 +59,7 @@ export class PrincipalComponent implements OnInit, AfterViewInit {
     this.animationFromBannerImages();
   }
 
+  @ViewChild('imagenContenedor') imagenArtista!: ElementRef<HTMLElement>;
   animationFromBannerImages() {
     gsap.from(this.imagenArtista.nativeElement, {
       scale: 0.5,
@@ -71,10 +71,10 @@ export class PrincipalComponent implements OnInit, AfterViewInit {
 
   @ViewChild('imgPrincipal') imgSpotify!: ElementRef<HTMLElement>;
   @ViewChildren('contenidoPrincipal') contenidoP!: QueryList<ElementRef>;
-  @HostListener('window:resize', [])
+  @ViewChild('textSpotify') textSpotify!: ElementRef<HTMLElement>;
+  /*  @HostListener('window:resize', []) */
   firstAnimationForPresentPage() {
     const tl = gsap.timeline({});
-
     gsap.set(this.imgSpotify.nativeElement, {
       y: '400%',
       scale: window.innerWidth < 576 ? 2 : 4,
@@ -84,11 +84,18 @@ export class PrincipalComponent implements OnInit, AfterViewInit {
     tl.to(this.imgSpotify.nativeElement, {
       duration: 0.8,
       opacity: 1,
-    }).to(this.imgSpotify.nativeElement, {
-      y: '0',
-      scale: 1,
-      duration: 1,
-    });
+    })
+      .to(this.imgSpotify.nativeElement, {
+        y: '0',
+        scale: 1,
+        duration: 1,
+      })
+      .from(this.textSpotify.nativeElement, {
+        opacity: 0,
+        ease: 'elastic',
+        repeat: 2,
+        duration: 2,
+      });
 
     this.contenidoP.forEach(({ nativeElement: elemento }: ElementRef) => {
       gsap.from(elemento, {
@@ -103,26 +110,65 @@ export class PrincipalComponent implements OnInit, AfterViewInit {
   /* animation firstContainer (front)*/
   @ViewChild('contenedor1') firstContainer!: ElementRef<HTMLElement>;
   animationScrollFirsContainer() {
-    const phones = gsap.utils.toArray('.phoneS');
-    const phonesAnimation = gsap.to(phones, {
-      y: '-100',
-    });
-    /* ideal segun yo 150 mobile, 100 normal para el start */
-    ScrollTrigger.create({
-      trigger: this.firstContainer.nativeElement,
-      start: `-150% 40%`,
-      end: 'bottom 15%',
-      animation: phonesAnimation,
-      scrub: true,
-    });
+    setTimeout(() => {
+      const phones = gsap.utils.toArray('.phoneS');
+      const phonesAnimation = gsap.to(phones, {
+        y: '-100',
+      });
+      /* ideal segun yo 150 mobile, 100 normal para el start */
+      ScrollTrigger.create({
+        trigger: this.firstContainer.nativeElement,
+        start: `start 40%`,
+        end: 'bottom 15%',
+        animation: phonesAnimation,
+        scrub: true,
+        markers: true,
+      });
+    }, 2000);
   }
 
   /* animation secondContainer (albums) */
   @ViewChild('contenedor2') secondContainer!: ElementRef<HTMLElement>;
+  @ViewChild('rowSecondContainer') rowContainer!: ElementRef<HTMLElement>;
   animationScrollSecondContainer() {
-    ScrollTrigger.create({
-      
-    })
+    setTimeout(() => {
+      const containerAnimation = gsap.to(this.secondContainer.nativeElement, {
+        opacity: 1,
+        scale: 0.9,
+        duration: 0.7,
+      });
+
+      ScrollTrigger.create({
+        trigger: this.secondContainer.nativeElement,
+        start: 'center center',
+        end: 'bottom center',
+        toggleActions: 'play reverse play reverse ',
+        animation: containerAnimation,
+      });
+    }, 200);
+  }
+
+  @ViewChild('contenedor3') thirdContainer!: ElementRef<HTMLElement>;
+  @ViewChild('contenedor4') fourContainer!: ElementRef<HTMLElement>;
+
+  animationScrollThirdContainer() {
+    setTimeout(() => {
+      const fourContainerAnimation = gsap.to(this.fourContainer.nativeElement, {
+        y: `-${this.fourContainer.nativeElement.offsetHeight}`,
+        duration: 4,
+        ease: 'none',
+      });
+      ScrollTrigger.create({
+        trigger: this.thirdContainer.nativeElement,
+        start: 'top center',
+        end: 'bottom top',
+        scrub: 1,
+        pin: true,
+        pinSpacing: false,
+        animation: fourContainerAnimation,
+        snap: 1,
+      });
+    }, 200);
   }
 
   constructor(

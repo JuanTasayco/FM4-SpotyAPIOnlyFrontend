@@ -21,6 +21,9 @@
       height: auto;
       padding-top: 5%;
     }
+    &--cards {
+      height: auto;
+    }
   }
 
   &-hero {
@@ -69,7 +72,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-
     &--artist {
       height: 100%;
       @include media-breakpoint-down(md) {
@@ -169,7 +171,9 @@
     }
   }
   &-svg {
-    background-color: rgba(3, 3, 3, 0.2);
+    background-color: #212529;
+    /* rgba(0, 0, 0, 0.5) */
+    border: 2px solid green;
   }
 
   &-button {
