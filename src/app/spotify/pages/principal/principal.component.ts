@@ -122,7 +122,6 @@ export class PrincipalComponent implements OnInit, AfterViewInit {
         end: 'bottom 15%',
         animation: phonesAnimation,
         scrub: true,
-        markers: true,
       });
     }, 2000);
   }
@@ -132,19 +131,21 @@ export class PrincipalComponent implements OnInit, AfterViewInit {
   @ViewChild('rowSecondContainer') rowContainer!: ElementRef<HTMLElement>;
   animationScrollSecondContainer() {
     setTimeout(() => {
-      const containerAnimation = gsap.to(this.secondContainer.nativeElement, {
+      /*  const containerAnimation = gsap.from(this.secondContainer.nativeElement, {
         opacity: 1,
         scale: 0.9,
         duration: 0.7,
       });
 
-      ScrollTrigger.create({
+      */
+
+   /*    ScrollTrigger.create({
         trigger: this.secondContainer.nativeElement,
-        start: 'center center',
-        end: 'bottom center',
+        start: 'top top',
+        end: 'bottom top',
         toggleActions: 'play reverse play reverse ',
-        animation: containerAnimation,
-      });
+        snap: 1,
+      }); */
     }, 200);
   }
 
@@ -154,32 +155,19 @@ export class PrincipalComponent implements OnInit, AfterViewInit {
     ElementRef<HTMLElement>
   >;
   animationScrollThirdContainer() {
-    setTimeout(() => {
+   /*  setTimeout(() => {
       this.containers3.forEach((elemento, index) => {
-        gsap.to(elemento.nativeElement, {
-          y: '100%',
+        gsap.from(elemento.nativeElement, {
+          opacity: 0,
           scrollTrigger: {
             scrub: 1,
-            trigger: elemento.nativeElement,
+            trigger: this.thirdContainer.nativeElement,
+            start: 'top 70%',
+            end: 'bottom center',
           },
         });
       });
-
-      const fourContainerAnimation = gsap.to(this.fourContainer.nativeElement, {
-        y: `-${this.fourContainer.nativeElement.offsetHeight}`,
-        duration: 4,
-        ease: 'none',
-      });
-      ScrollTrigger.create({
-        trigger: this.thirdContainer.nativeElement,
-        start: 'top center',
-        end: 'bottom top',
-        scrub: 1,
-        pin: true,
-        pinSpacing: false,
-        animation: fourContainerAnimation,
-      });
-    }, 200);
+    }, 200); */
   }
 
   constructor(

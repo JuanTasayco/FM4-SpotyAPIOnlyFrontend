@@ -1,7 +1,7 @@
 @use "src/_custom" as *;
 
 .Menu {
-  height: 100%;
+  height: 100dvh;
   position: relative;
   box-sizing: border-box;
   width: 100%;
@@ -22,6 +22,10 @@
       padding-top: 5%;
     }
     &--cards {
+      height: auto;
+    }
+
+    &--contenedor3 {
       height: auto;
     }
   }
@@ -46,6 +50,19 @@
   &-row {
     padding: 0;
     margin: 0;
+
+    &--info {
+      background-color: #212529;
+      backdrop-filter: blur(1rem);
+    }
+
+    &--background {
+      justify-content: center;
+      align-items: center;
+    }
+    &--targets {
+      margin-top: 1rem;
+    }
   }
 
   &-artist {
@@ -55,6 +72,8 @@
       backdrop-filter: blur(10px);
       background-size: cover;
       background-position: center;
+      display: flex;
+      align-items: center;
       &::before {
         content: "";
         backdrop-filter: blur(10px);
@@ -80,8 +99,8 @@
     }
 
     &--description {
+      display: flex;
       flex-direction: column;
-      align-items: flex-start;
       @include media-breakpoint-up(md) {
         height: 100%;
         margin-bottom: 5rem;
@@ -93,10 +112,6 @@
         height: 40%;
       }
     }
-  }
-
-  &-row {
-    height: 100%;
   }
 
   &-info {
@@ -113,6 +128,13 @@
     flex-direction: column;
     padding: 3rem 0;
   }
+
+  &-detail {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
   &-h1 {
     font-weight: bold;
     font-size: clamp(1rem, 3vw, 4rem);
@@ -125,7 +147,6 @@
     font-weight: bold;
     font-size: clamp(0.9rem, 2.5vw, 3rem);
     color: white;
-
     &--hero {
       font-size: clamp(1.5rem, 3.5vw, 4.5rem);
     }
@@ -173,7 +194,6 @@
   &-svg {
     background-color: #212529;
     /* rgba(0, 0, 0, 0.5) */
-    border: 2px solid green;
   }
 
   &-button {
@@ -183,13 +203,6 @@
     }
   }
 
-  &-contenedor2 {
-    padding: 2rem;
-    position: relative;
-    @include media-breakpoint-up(md) {
-      height: 75%;
-    }
-  }
   &-imgSec {
     display: flex;
     justify-content: center;
@@ -198,11 +211,7 @@
 
   &-img {
     &--contenedor2 {
-      max-width: 30rem;
-      text-align: center;
-      @include media-breakpoint-down(md) {
-        max-width: 12rem;
-      }
+      width: min(90%, 570px);
     }
 
     &--animation {
@@ -219,9 +228,15 @@
 
   &-p {
     &--contenedor2 {
+      color: white;
       @include media-breakpoint-up(md) {
         width: 80%;
       }
+    }
+
+    &--advertisements {
+      color: white;
+      font-size: clamp(17px, 19px, 21px);
     }
   }
 }

@@ -1,7 +1,7 @@
 <app-spinner *ngIf="SpinnerIsActive"></app-spinner>
 
 <div class="Menu" *ngIf="artistas.length > 0">
-  <div class="Menu-principal">
+  <main class="Menu-principal">
     <div class="Menu-container Menu-container--animation">
       <div class="Menu-hero">
         <img
@@ -51,7 +51,7 @@
       class="Menu-container Menu-artist--background rounded-3 overflow-hidden"
     >
       <!-- artista descriptions -->
-      <div class="Menu-row Menu-row--background row">
+      <div class="Menu-row Menu-row--background row mx-auto">
         <div class="Menu-content Menu-content--artist col-md-6 p-5 m-0">
           <img
             #imagenContenedor
@@ -114,14 +114,19 @@
     </div>
 
     <!-- segundo contenedor -->
-    <div #contenedor3 class="Menu-container overflow-hidden">
-      <div class="Menu-descriptions container h-100">
-        <div class="Menu-row Menu-row--info row">
-          <div #menuContenedor3 class="Menu-info col-md-6 p-5 text-light">
+    <div
+      #contenedor3
+      class="Menu-container Menu-container--contenedor3 overflow-hidden"
+    >
+      <div class="Menu-detail container h-auto py-5">
+        <div
+          class="Menu-row Menu-row--info row shadow-lg rounded-3 mb-5 bg-dark"
+        >
+          <div #menuContenedor3 class="Menu-info col-xl-6 p-5 text-light">
             <h2 class="Menu-h2 Menu-h2--contenedor2 mb-5 text-start">
               Que podrás hacer aquí ?
             </h2>
-            <p class="Menu-p Menu-p--contenedor2">
+            <p class="Menu-p Menu-p--advertisements">
               Esta página recopila los últimos éxitos más sonados de Spotify,
               también puedes buscar tus artitas favoritas y escuchar su música
               más sonada desde aquí, esta página está hecha sin fines de lucro,
@@ -129,12 +134,46 @@
               música que contiene Spotify.
             </p>
           </div>
-          <div #menuContenedor3 class="Menu-imgSec col-md-6">
+          <div #menuContenedor3 class="Menu-imgSec col-xl-6 p-2">
             <img
               [src]="artistas[11].images[0].url"
               alt="imgArtista"
               class="Menu-img Menu-img--contenedor2 img-fluid rounded-3 shadow-lg"
             />
+          </div>
+        </div>
+
+        <div class="Menu-row Menu-row--targets row">
+          <div
+            class="Menu-col col-md-5 me-2 shadow-lg rounded-3 rounded-3 p-5 bg-danger"
+          >
+            <p class="Menu-p Menu-p--advertisements fw-bold">
+              Marca como favoritos a los artistas que te marcaron.
+            </p>
+            <p class="Menu-p Menu-p--advertisements">
+              Arma tu lista de los artistas que más te emocionan y recibe
+              actualizaciones automáticas sobre nuevos lanzamientos y
+              recomendaciones a la altura.
+            </p>
+            <img
+              alt="imgArtista2"
+              [src]="artistas[5].images[0].url"
+              class="Menu-img Menu-img--contenedor2 mx-auto rounded-3"
+            />
+          </div>
+
+          <div
+            class="Menu-col col-md-5 shadow-lg rounded-3 p-5 mx-auto bg-success d-flex flex-column align-items-center"
+          >
+            <img
+              alt="imgArtista3"
+              [src]="artistas[15].images[0].url"
+              class="Menu-img Menu-img--contenedor2 rounded-3"
+            />
+            <p class="Menu-p Menu-p--advertisements mt-3">
+              Agranda tu lista de canciones favoritas con las recomendaciones
+              inspiradas en lo que te gusta escuchar.
+            </p>
           </div>
         </div>
       </div>
@@ -144,5 +183,9 @@
     <div #contenedor4 class="Menu-container Menu-container--cards bg-dark">
       <app-cards [contenidos]="artistas"></app-cards>
     </div>
-  </div>
+
+    <footer class=" bottom-0">
+      <app-footer></app-footer>
+    </footer>
+  </main>
 </div>
