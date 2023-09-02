@@ -100,12 +100,14 @@ export class PrincipalComponent implements OnInit, AfterViewInit {
     const altoMenu = document.querySelector('.Menu-principal')?.clientWidth;
     contenido.forEach((element, index) => {
       if (index == 0) {
+        /* controlar el primer elemento con el button */
         gsap.from(element, {
           delay: 0.9,
           y: `${altoMenu}px`,
           duration: 1.4,
         });
       } else {
+        /* controlar los telefonos de la portada */
         const phones: Array<HTMLElement> = gsap.utils.toArray('.phoneS');
         gsap.from(element, {
           delay: 0.7,
@@ -113,35 +115,21 @@ export class PrincipalComponent implements OnInit, AfterViewInit {
           duration: 1.8,
         });
 
+        /* controlar animación de los telefonos  */
         gsap.from(phones[0], {
           delay: 1.5,
           rotateX: '20',
           translateX: '-40%',
-          duration:1.5
+          duration: 1.5,
         });
         gsap.from(phones[1], {
           delay: 1.5,
           rotateX: '20',
           translateX: '40%',
-          duration:1.5
+          duration: 1.5,
         });
       }
     });
-    console.log(contenido);
-    /*   gsap.from(contenido, {
-      delay: 1.2,
-      opacity: 0,
-      y: '200%',
-      duration: 1,
-    }); */
-    /*  this.contenidoP.forEach(({ nativeElement: elemento }: ElementRef) => {
-      gsap.from(elemento, {
-        delay: 1.2,
-        opacity: 0,
-        y: '200%',
-        duration: 1,
-      });
-    }); */
   }
 
   /* animation firstContainer (front)*/
@@ -187,23 +175,34 @@ export class PrincipalComponent implements OnInit, AfterViewInit {
 
   @ViewChild('contenedor3') thirdContainer!: ElementRef<HTMLElement>;
   @ViewChild('contenedor4') fourContainer!: ElementRef<HTMLElement>;
-  @ViewChildren('menuContenedor3') containers3!: QueryList<
-    ElementRef<HTMLElement>
-  >;
+  @ViewChildren('menu3') containers3!: QueryList<ElementRef<HTMLElement>>;
   animationScrollThirdContainer() {
-    /*  setTimeout(() => {
+    setTimeout(() => {
       this.containers3.forEach((elemento, index) => {
-        gsap.from(elemento.nativeElement, {
-          opacity: 0,
-          scrollTrigger: {
-            scrub: 1,
-            trigger: this.thirdContainer.nativeElement,
-            start: 'top 70%',
-            end: 'bottom center',
-          },
-        });
+        if (index == 0) {
+          gsap.from(elemento.nativeElement, {
+            opacity: 0,
+            scrollTrigger: {
+              scrub: 1,
+              trigger: this.thirdContainer.nativeElement,
+              start: 'top 70%',
+              end: 'bottom center',
+            },
+          });
+        } else {
+          gsap.from(elemento.nativeElement, {
+            opacity: 0,
+            y: '50%',
+            scrollTrigger: {
+              scrub: 1,
+              trigger: this.thirdContainer.nativeElement,
+              start: 'top 70%',
+              end: 'bottom center',
+            },
+          });
+        }
       });
-    }, 200); */
+    }, 200);
   }
 
   constructor(

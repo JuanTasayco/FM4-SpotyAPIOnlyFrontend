@@ -1,0 +1,46 @@
+@use "src/_custom" as *;
+.Footer {
+  background-color: black;
+  padding: 5rem 0 10rem 0;
+
+  &-col {
+    position: relative;
+    &--img {
+      padding: 0;
+    }
+
+    &--socials {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      gap: 1rem;
+      @include media-breakpoint-down(md) {
+        justify-content: flex-start;
+      }
+    }
+  }
+  &-img {
+    height: fit-content;
+    max-width: 8.5rem;
+  }
+
+  &-a {
+    color: white;
+    font-size: 0.85rem;
+    line-height: 1.5;
+    &--title {
+      text-transform: uppercase;
+      color: gray;
+      font-weight: bold;
+      font-size: 0.75rem;
+    }
+  }
+  &-containerSvg {
+    border-radius: 50%;
+    padding: 0.8rem;
+    background-color: $dark;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
