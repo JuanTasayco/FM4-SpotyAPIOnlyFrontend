@@ -70,7 +70,6 @@ export class PrincipalComponent implements OnInit, AfterViewInit {
   }
 
   @ViewChild('imgPrincipal') imgSpotify!: ElementRef<HTMLElement>;
-  @ViewChildren('contenidoPrincipal') contenidoP!: QueryList<ElementRef>;
   @ViewChild('textSpotify') textSpotify!: ElementRef<HTMLElement>;
   /*  @HostListener('window:resize', []) */
   firstAnimationForPresentPage() {
@@ -82,7 +81,7 @@ export class PrincipalComponent implements OnInit, AfterViewInit {
     });
 
     tl.to(this.imgSpotify.nativeElement, {
-      duration: 0.8,
+      duration: 1.2,
       opacity: 1,
     })
       .to(this.imgSpotify.nativeElement, {
@@ -97,14 +96,52 @@ export class PrincipalComponent implements OnInit, AfterViewInit {
         duration: 2,
       });
 
-    this.contenidoP.forEach(({ nativeElement: elemento }: ElementRef) => {
+    const contenido: Array<HTMLElement> = gsap.utils.toArray('.contenido');
+    const altoMenu = document.querySelector('.Menu-principal')?.clientWidth;
+    contenido.forEach((element, index) => {
+      if (index == 0) {
+        gsap.from(element, {
+          delay: 0.9,
+          y: `${altoMenu}px`,
+          duration: 1.4,
+        });
+      } else {
+        const phones: Array<HTMLElement> = gsap.utils.toArray('.phoneS');
+        gsap.from(element, {
+          delay: 0.7,
+          y: `${altoMenu}px`,
+          duration: 1.8,
+        });
+
+        gsap.from(phones[0], {
+          delay: 1.5,
+          rotateX: '20',
+          translateX: '-40%',
+          duration:1.5
+        });
+        gsap.from(phones[1], {
+          delay: 1.5,
+          rotateX: '20',
+          translateX: '40%',
+          duration:1.5
+        });
+      }
+    });
+    console.log(contenido);
+    /*   gsap.from(contenido, {
+      delay: 1.2,
+      opacity: 0,
+      y: '200%',
+      duration: 1,
+    }); */
+    /*  this.contenidoP.forEach(({ nativeElement: elemento }: ElementRef) => {
       gsap.from(elemento, {
         delay: 1.2,
         opacity: 0,
         y: '200%',
         duration: 1,
       });
-    });
+    }); */
   }
 
   /* animation firstContainer (front)*/
@@ -138,8 +175,7 @@ export class PrincipalComponent implements OnInit, AfterViewInit {
       });
 
       */
-
-   /*    ScrollTrigger.create({
+      /*    ScrollTrigger.create({
         trigger: this.secondContainer.nativeElement,
         start: 'top top',
         end: 'bottom top',
@@ -155,7 +191,7 @@ export class PrincipalComponent implements OnInit, AfterViewInit {
     ElementRef<HTMLElement>
   >;
   animationScrollThirdContainer() {
-   /*  setTimeout(() => {
+    /*  setTimeout(() => {
       this.containers3.forEach((elemento, index) => {
         gsap.from(elemento.nativeElement, {
           opacity: 0,

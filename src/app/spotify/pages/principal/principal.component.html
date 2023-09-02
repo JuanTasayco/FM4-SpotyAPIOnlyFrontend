@@ -11,7 +11,7 @@
           class="Menu-img Menu-img--animation"
         />
         <small #textSpotify class="text-light fw-bold">Spotify</small>
-        <div #contenidoPrincipal class="text-center">
+        <div class="contenido text-center">
           <h2 class="Menu-h2 Menu-h2--hero">Sumérgete en el sonido.</h2>
           <button class="Menu-button btn btn-danger mt-2 py-3 rounded-5 px-3">
             Busca tu música favorita
@@ -21,7 +21,7 @@
     </div>
 
     <!-- menu aditional banner -->
-    <div #contenedor1 #contenidoPrincipal class="Menu-banner overflow-hidden">
+    <div #contenedor1 class="Menu-banner contenido overflow-hidden">
       <img
         #imgPhone
         src="assets/phone3.png"
@@ -42,7 +42,7 @@
       />
     </div>
 
-    <!-- primer contenedor -->
+    <!-- segundo contenedor -->
     <div
       #contenedor2
       [ngStyle]="{
@@ -113,7 +113,7 @@
       </button>
     </div>
 
-    <!-- segundo contenedor -->
+    <!-- tercer contenedor -->
     <div
       #contenedor3
       class="Menu-container Menu-container--contenedor3 overflow-hidden"
@@ -145,6 +145,7 @@
 
         <div class="Menu-row Menu-row--targets row">
           <div
+            #menuContenedor3
             class="Menu-col col-md-5 me-2 shadow-lg rounded-3 rounded-3 p-5 bg-danger"
           >
             <p class="Menu-p Menu-p--advertisements fw-bold">
@@ -163,6 +164,7 @@
           </div>
 
           <div
+            #menuContenedor3
             class="Menu-col col-md-5 shadow-lg rounded-3 p-5 mx-auto bg-success d-flex flex-column align-items-center"
           >
             <img
@@ -179,12 +181,12 @@
       </div>
     </div>
 
-    <!-- tercer contenedor -->
+    <!-- cuarto contenedor -->
     <div #contenedor4 class="Menu-container Menu-container--cards bg-dark">
       <app-cards [contenidos]="artistas"></app-cards>
     </div>
 
-    <footer class=" bottom-0">
+    <footer class="bottom-0">
       <app-footer></app-footer>
     </footer>
   </main>
