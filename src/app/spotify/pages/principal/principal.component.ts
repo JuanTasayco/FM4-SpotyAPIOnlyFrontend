@@ -12,6 +12,7 @@ import {
 import { SpotifyService } from '../../services/spotify.service';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { ActivatedRoute, Router } from '@angular/router';
 @Component({
   selector: 'app-principal',
   templateUrl: './principal.component.html',
@@ -57,6 +58,18 @@ export class PrincipalComponent implements OnInit, AfterViewInit {
     this.posArray++;
     this.desactivarControles = true;
     this.animationFromBannerImages();
+  }
+
+  redirectToArtist(contenido: any) {
+    if (contenido.type === 'artist') {
+      this.router.navigate([`/spotify/artista/${contenido.id}`]);
+    } else {
+      this.router.navigate([`/spotify/artista/${contenido.artists[0].id}`]);
+    }
+  }
+
+  redirectToSearchArtist() {
+    this.router.navigate(['/spotify/buscar']);
   }
 
   @ViewChild('imagenContenedor') imagenArtista!: ElementRef<HTMLElement>;
@@ -207,6 +220,8 @@ export class PrincipalComponent implements OnInit, AfterViewInit {
 
   constructor(
     private spotiService: SpotifyService,
-    private cdr: ChangeDetectorRef
+    private cdr: ChangeDetectorRef,
+    private router: Router,
+    private activatedRouter: ActivatedRoute
   ) {}
 }

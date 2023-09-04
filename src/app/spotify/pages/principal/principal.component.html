@@ -1,5 +1,5 @@
 <app-spinner *ngIf="SpinnerIsActive"></app-spinner>
-
+<app-navbar></app-navbar>
 <div class="Menu" *ngIf="artistas.length > 0">
   <main class="Menu-principal">
     <div class="Menu-container Menu-container--animation">
@@ -13,7 +13,9 @@
         <small #textSpotify class="text-light fw-bold">Spotify</small>
         <div class="contenido text-center">
           <h2 class="Menu-h2 Menu-h2--hero">Sumérgete en el sonido.</h2>
-          <button class="Menu-button btn btn-danger mt-2 py-3 rounded-5 px-3">
+          <button 
+          (click)="redirectToSearchArtist()"
+          class="Menu-button btn btn-danger mt-2 py-3 rounded-5 px-3">
             Busca tu música favorita
           </button>
         </div>
@@ -60,7 +62,10 @@
         <div class="Menu-content Menu-content--description col-md-6">
           <h1 class="Menu-h1">{{ artistas[posArray].name }}</h1>
           <h2 class="Menu-h2">-{{ artistas[posArray].artists[0].name }}</h2>
-          <button class="Menu-button btn btn-success mt-4 mx-auto">
+          <button
+            (click)="redirectToArtist(artistas[posArray])"
+            class="Menu-button btn btn-success mt-4 mx-auto"
+          >
             Escuchar ahora
           </button>
         </div>

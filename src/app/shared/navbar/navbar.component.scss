@@ -41,8 +41,13 @@
   left: 0;
   z-index: 5;
   opacity: 0.9;
-  width: 6%;
+  /*   width: 6%; */
+  width: max(50px, 6rem);
   height: 10%;
   background-color: rgba(0, 0, 0, 0.4);
   backdrop-filter: blur(20px);
+  @include media-breakpoint-up(xxl) {
+    width: max(80px, 10rem);
+    height: 11%;
+  }
 }
