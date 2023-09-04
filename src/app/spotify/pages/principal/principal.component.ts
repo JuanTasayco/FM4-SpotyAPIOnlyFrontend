@@ -196,7 +196,6 @@ export class PrincipalComponent implements OnInit, AfterViewInit {
             opacity: 0,
             scrollTrigger: {
               scrub: 1,
-              markers: true,
               trigger: this.thirdContainer.nativeElement,
               start: 'top bottom',
               end: 'bottom bottom',

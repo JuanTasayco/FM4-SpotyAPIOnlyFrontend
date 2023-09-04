@@ -1,24 +1,26 @@
-<div class="Search-nav position-relative">
-  <app-navbar></app-navbar>
-</div>
-<div class="Search container">
-  <div class="Search-row row p-2">
-    <div class="Search-col col-10 mx-auto mt-3">
-      <form (ngSubmit)="presionarEnter()" class="Search-form">
-        <input
-          type="text"
-          #valoresInput
-          class="Search-input form-control bg-dark rounded-5 px-4"
-          (input)="obtenerBusqueda($event)"
-          placeholder="Busca tu artista favorito.."
-        />
-      </form>
+<div class="Search">
+  <div class="Search-nav position-relative">
+    <app-navbar></app-navbar>
+  </div>
+  <div class="container">
+    <div class="Search-row row p-2">
+      <div class="Search-col col-10 mx-auto mt-3">
+        <form (ngSubmit)="presionarEnter()" class="Search-form">
+          <input
+            type="text"
+            #valoresInput
+            class="Search-input form-control bg-dark rounded-5 px-4"
+            (input)="obtenerBusqueda($event)"
+            placeholder="Busca tu artista favorito.."
+          />
+        </form>
+      </div>
     </div>
   </div>
+
+  <app-spinner *ngIf="SpinnerIsActive"></app-spinner>
+
+  <ng-container *ngIf="resultados.length > 0">
+    <app-cards [contenidos]="resultados"></app-cards>
+  </ng-container>
 </div>
-
-<app-spinner *ngIf="SpinnerIsActive"></app-spinner>
-
-<ng-container *ngIf="resultados.length > 0">
-  <app-cards [contenidos]="resultados"></app-cards>
-</ng-container>
