@@ -13,34 +13,34 @@
         <small #textSpotify class="text-light fw-bold">Spotify</small>
         <div class="contenido text-center">
           <h2 class="Menu-h2 Menu-h2--hero">Sumérgete en el sonido.</h2>
-          <button 
-          (click)="redirectToSearchArtist()"
-          class="Menu-button btn btn-danger mt-2 py-3 rounded-5 px-3">
+          <button
+            (click)="redirectToSearchArtist()"
+            class="Menu-button btn mt-2 py-3 rounded-5 px-3"
+          >
             Busca tu música favorita
           </button>
         </div>
       </div>
-    </div>
-
-    <div #contenedor1 class="Menu-banner contenido overflow-hidden">
-      <img
-        #imgPhone
-        src="assets/phone3.png"
-        alt="phone1"
-        class="Menu-img Menu-img--phone phoneS"
-      />
-      <img
-        #imgPhone
-        src="assets/phone2.png"
-        alt="phone2"
-        class="Menu-img Menu-img--phone"
-      />
-      <img
-        #imgPhone
-        src="assets/phone3.png"
-        alt="phone3"
-        class="Menu-img Menu-img--phone phoneS"
-      />
+      <div #contenedor1 class="Menu-banner contenido overflow-hidden">
+        <img
+          #imgPhone
+          src="assets/phone3.png"
+          alt="phone1"
+          class="Menu-img Menu-img--phone phoneS"
+        />
+        <img
+          #imgPhone
+          src="assets/phone2.png"
+          alt="phone2"
+          class="Menu-img Menu-img--phone"
+        />
+        <img
+          #imgPhone
+          src="assets/phone3.png"
+          alt="phone3"
+          class="Menu-img Menu-img--phone phoneS"
+        />
+      </div>
     </div>
 
     <div
@@ -133,7 +133,7 @@
               música que contiene Spotify.
             </p>
           </div>
-          <div #menu3 class="Menu-imgSec col-xl-6 p-2">
+          <div class="Menu-imgSec col-xl-6 p-2">
             <img
               [src]="artistas[11].images[0].url"
               alt="imgArtista"

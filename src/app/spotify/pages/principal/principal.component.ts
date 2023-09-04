@@ -187,7 +187,6 @@ export class PrincipalComponent implements OnInit, AfterViewInit {
   }
 
   @ViewChild('contenedor3') thirdContainer!: ElementRef<HTMLElement>;
-  @ViewChild('contenedor4') fourContainer!: ElementRef<HTMLElement>;
   @ViewChildren('menu3') containers3!: QueryList<ElementRef<HTMLElement>>;
   animationScrollThirdContainer() {
     setTimeout(() => {
@@ -197,9 +196,10 @@ export class PrincipalComponent implements OnInit, AfterViewInit {
             opacity: 0,
             scrollTrigger: {
               scrub: 1,
+              markers: true,
               trigger: this.thirdContainer.nativeElement,
-              start: 'top 70%',
-              end: 'bottom center',
+              start: 'top bottom',
+              end: 'bottom bottom',
             },
           });
         } else {

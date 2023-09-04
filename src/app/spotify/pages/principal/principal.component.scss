@@ -8,13 +8,6 @@
   /*  overflow: hidden; */
   &-principal {
     height: 100%;
-    background-color: #08295e;
-    background-image: linear-gradient(
-      225deg,
-      #08295e 0%,
-      #784ba0 50%,
-      #153850 100%
-    );
     padding: 0;
     margin: 0;
   }
@@ -23,6 +16,13 @@
     height: 100%;
     width: 100%;
     box-sizing: border-box;
+    background-color: #08295e;
+    background-image: linear-gradient(
+      225deg,
+      #08295e 0%,
+      #784ba0 50%,
+      #153850 100%
+    );
     &--animation {
       height: auto;
       padding-top: 5%;
@@ -203,9 +203,20 @@
   }
 
   &-button {
+    background-color: #66219e;
+    background-image: linear-gradient(
+      230deg,
+      #66219e 0%,
+      #18713f 24%,
+      #212692 75%,
+      #4d178b 100%
+    );
+
+    color: white;
     transition: transform 0.5s ease;
     &:hover {
       transform: scale(1.3);
+      color: white;
     }
   }
 

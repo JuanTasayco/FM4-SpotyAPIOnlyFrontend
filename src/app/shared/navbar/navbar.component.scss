@@ -2,6 +2,8 @@
 
 .Nav {
   width: 100%;
+  backdrop-filter: blur(1rem);
+
   @include media-breakpoint-up(md) {
     position: absolute;
     top: 0;

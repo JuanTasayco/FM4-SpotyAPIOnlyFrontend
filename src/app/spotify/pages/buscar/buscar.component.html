@@ -1,6 +1,9 @@
-<div class="Search container" style="border: 2px solid red">
+<div class="Search-nav position-relative">
+  <app-navbar></app-navbar>
+</div>
+<div class="Search container">
   <div class="Search-row row p-2">
-    <div class="Search-col col-12">
+    <div class="Search-col col-10 mx-auto mt-3">
       <form (ngSubmit)="presionarEnter()" class="Search-form">
         <input
           type="text"
