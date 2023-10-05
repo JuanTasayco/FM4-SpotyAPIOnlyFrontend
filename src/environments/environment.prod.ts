@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  tokenSpotify: "https://pf4-spoty-api.vercel.app/spotify"
+  tokenSpotify: "https://spotyapitests-9upk-dev.fl0.io/spotify"
 };
