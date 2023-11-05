@@ -1,36 +1,24 @@
 @use "src/_custom" as *;
 
 .Artists {
+  display: flex;
 
-    &-section--header{
-       
-        @include media-breakpoint-up(md){
-          
-        }
+  justify-content: center;
+  &-section--header {
+    @include media-breakpoint-up(md) {
     }
+  }
 
+  &-container {
+    margin: auto;
+  }
 
-    &-col{
-        &--description{
-        }
+  &-img {
+    max-width: 13rem;
+
+    &--table {
+      height: 4rem;
+      width: 4rem;
     }
-
-    &-table {}
-
-    &-img {
-        max-width: 13rem;
-
-        &--header{
-        
-        }
-
-        &--table {
-            height: 4rem;
-            width: 4rem;
-        }
-
-    }
-
-
-
+  }
 }

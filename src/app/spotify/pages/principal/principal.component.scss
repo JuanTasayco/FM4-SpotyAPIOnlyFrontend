@@ -16,13 +16,7 @@
     height: 100%;
     width: 100%;
     box-sizing: border-box;
-    background-color: #08295e;
-    background-image: linear-gradient(
-      225deg,
-      #08295e 0%,
-      #784ba0 50%,
-      #153850 100%
-    );
+
     &--animation {
       height: auto;
       padding-top: 5%;
@@ -58,7 +52,7 @@
     margin: 0;
 
     &--info {
-      background-color: #212529;
+
       backdrop-filter: blur(1rem);
     }
 
@@ -150,8 +144,9 @@
     }
   }
   &-h2 {
-    font-weight: bold;
-    font-size: clamp(0.9rem, 2.5vw, 3rem);
+    font-weight: 1000;
+    letter-spacing: -1px;
+    font-size: clamp(0.9rem, 3vw, 3rem);
     color: white;
     &--hero {
       font-size: clamp(1.5rem, 3.5vw, 4.5rem);
@@ -252,7 +247,6 @@
     }
 
     &--advertisements {
-      color: white;
       font-size: clamp(17px, 19px, 21px);
     }
   }

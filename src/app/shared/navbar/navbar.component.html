@@ -1,4 +1,4 @@
-<header class="d-block d-md-none">
+<section class="d-block d-md-none">
   <nav class="Nav navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="Nav-container container-fluid d-md-none">
       <a class="navbar-brand gap-1 d-flex" routerLink="/spotify">
@@ -40,13 +40,13 @@
   </nav>
 </section>
 
-<header class="d-none d-md-block" >
+<header class="d-none d-md-block">
   <img
     src="assets/img/banner-ico.png"
     alt="spotyimg"
     class="Nav-img Nav-img--sidebar d-none d-md-block"
   />
-  <div class="Sidebar container-fluid position-fixed" >
+  <div class="Sidebar container-fluid position-fixed">
     <div class="Sidebar-row row h-100">
       <!-- Barra vertical -->
       <nav
@@ -56,14 +56,15 @@
           class="m-auto h-100 d-flex align-items-center justify-content-center"
         >
           <ul class="Sidebar-ul nav m-auto">
-            <li class="nav-item">
+            <li class="nav-item w-100">
               <a
-                class="nav-link mx-auto"
+                class="nav-link m-auto"
                 routerLink="/spotify/principal"
                 routerLinkActive="active"
                 [routerLinkActiveOptions]="{ exact: true }"
               >
                 <svg
+                  class="w-100"
                   xmlns="http://www.w3.org/2000/svg"
                   width="24"
                   height="24"
@@ -76,15 +77,15 @@
                 </svg>
               </a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item w-100">
               <a
-                class="nav-link"
+                class="nav-link m-auto"
                 routerLink="/spotify/buscar"
                 routerLinkActive="active"
                 [routerLinkActiveOptions]="{ exact: true }"
               >
                 <svg
-                  class=""
+                  class="w-100"
                   xmlns="http://www.w3.org/2000/svg"
                   width="24"
                   height="24"

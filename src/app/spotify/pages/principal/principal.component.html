@@ -10,9 +10,11 @@
           alt=""
           class="Menu-img Menu-img--animation"
         />
-        <small #textSpotify class="text-light fw-bold">Spotify</small>
+        <small #textSpotify class="fw-bold">Spotify</small>
         <div class="contenido text-center">
-          <h2 class="Menu-h2 Menu-h2--hero">Sumérgete en el sonido.</h2>
+          <h2 class="Menu-h2 Menu-h2--hero fw-boldwer">
+            Sumérgete en el sonido.
+          </h2>
           <button
             (click)="redirectToSearchArtist()"
             class="Menu-button btn mt-2 py-3 rounded-5 px-3"
@@ -119,9 +121,9 @@
       <div class="Menu-detail container h-auto py-5">
         <div
           #menu3
-          class="Menu-row Menu-row--info row shadow-lg rounded-3 mb-5 bg-dark"
+          class="Menu-row Menu-row--info row shadow-lg rounded-3 mb-5"
         >
-          <div class="Menu-info col-xl-6 p-5 text-light">
+          <div class="Menu-info col-xl-6 p-5">
             <h2 class="Menu-h2 Menu-h2--contenedor2 mb-5 text-start">
               Que podrás hacer aquí ?
             </h2>
@@ -180,7 +182,7 @@
       </div>
     </div>
 
-    <div #contenedor4 class="Menu-container Menu-container--cards bg-dark">
+    <div #contenedor4 class="Menu-container Menu-container--cards">
       <app-cards [contenidos]="artistas"></app-cards>
     </div>
 
