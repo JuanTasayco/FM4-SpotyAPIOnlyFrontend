@@ -6,3 +6,23 @@
 @use "./app/spotify/pages/artista/artista.component";
 @use "./app/spotify/components/spinner/spinner.component";
 @use "./app/shared/footer/footer.component";
+
+html.lenis {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}

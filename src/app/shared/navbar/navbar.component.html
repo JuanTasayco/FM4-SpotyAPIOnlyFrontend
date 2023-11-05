@@ -1,5 +1,5 @@
 <header class="d-block d-md-none">
-  <nav class="Nav navbar navbar-expand-lg navbar-dark">
+  <nav class="Nav navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="Nav-container container-fluid d-md-none">
       <a class="navbar-brand gap-1 d-flex" routerLink="/spotify">
         <img src="assets/img/banner-ico.png" alt="spotyimg" class="Nav-img" />
@@ -38,21 +38,25 @@
       </div>
     </div>
   </nav>
-</header>
+</section>
 
-<header class="d-none d-md-block">
+<header class="d-none d-md-block" >
   <img
     src="assets/img/banner-ico.png"
     alt="spotyimg"
     class="Nav-img Nav-img--sidebar d-none d-md-block"
   />
-  <div class="Sidebar container-fluid">
-    <div class="row">
+  <div class="Sidebar container-fluid position-fixed" >
+    <div class="Sidebar-row row h-100">
       <!-- Barra vertical -->
-      <nav class="col-md-2 d-none d-md-block sidebar w-100">
-        <div class="position-sticky">
-          <ul class="nav flex-column m-auto">
-            <li class="nav-item mx-auto">
+      <nav
+        class="Sidebar-nav col-md-2 d-none d-md-block sidebar w-100 m-auto h-100"
+      >
+        <div
+          class="m-auto h-100 d-flex align-items-center justify-content-center"
+        >
+          <ul class="Sidebar-ul nav m-auto">
+            <li class="nav-item">
               <a
                 class="nav-link mx-auto"
                 routerLink="/spotify/principal"
@@ -72,7 +76,7 @@
                 </svg>
               </a>
             </li>
-            <li class="nav-item mx-auto">
+            <li class="nav-item">
               <a
                 class="nav-link"
                 routerLink="/spotify/buscar"
