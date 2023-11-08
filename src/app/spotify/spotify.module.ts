@@ -15,6 +15,7 @@ import { ArtistaComponent } from './pages/artista/artista.component';
 import { DomseguroPipe } from './pipes/domseguro.pipe';
 import { SgvIconsComponent } from './components/sgv-icons/sgv-icons.component';
 import { CarrouselComponent } from './components/carrousel/carrousel.component';
+import { MockupMobileComponent } from './components/mockup-mobile/mockup-mobile.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { CarrouselComponent } from './components/carrousel/carrousel.component';
     FormsModule,
     CommonModule,
     CarrouselComponent,
+    MockupMobileComponent,
   ],
 })
 export class SpotifyModule {}

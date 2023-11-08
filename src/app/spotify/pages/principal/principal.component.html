@@ -25,42 +25,56 @@
         </div>
       </div>
       <div #contenedor1 class="Menu-banner contenido overflow-hidden">
-        <img
+        <app-mockup-mobile
+          class="mt-5"
+          [imageMockup]="'assets/phone3.png'"
           #imgPhone
-          src="assets/phone3.png"
-          alt="phone1"
-          class="Menu-img Menu-img--phone phoneS"
-        />
-        <img
+        ></app-mockup-mobile>
+
+        <app-mockup-mobile
+          [imageMockup]="'assets/phone3.png'"
           #imgPhone
-          src="assets/phone2.png"
-          alt="phone2"
-          class="Menu-img Menu-img--phone"
-        />
-        <img
+        ></app-mockup-mobile>
+
+        <app-mockup-mobile
+          class="mt-5"
+          [imageMockup]="'assets/phone3.png'"
           #imgPhone
-          src="assets/phone3.png"
-          alt="phone3"
-          class="Menu-img Menu-img--phone phoneS"
-        />
+        ></app-mockup-mobile>
       </div>
     </div>
 
     <div class="Menu-carousel">
-      <app-carrousel *ngIf="artistas" [artistasC]="artistas"></app-carrousel>
+      <div class="row m-0 p-0 justify-content-center align-items-center">
+        <div class="col-12 col-md-5 p-5">
+          <h2 class="fw-bold fs-1">
+            Reproduce y escucha lo mejor de nuestro repertorio
+            <!-- Making earth cooler for people, nature, climate -->
+          </h2>
+          <p class="w-75 mt-5">
+            Deja que te mostremos los artistas más sonados del momento, además
+            podrás buscar a tu artista favorito, si no deseas un preview de la
+            canción redirigete a la página oficial rapidamente.
+          </p>
+          <button class="btn btn-success fw-bold mt-5">Buscar ahora</button>
+        </div>
+        <div class="col-12 col-md-7 p-5">
+          <div class="Menu-appCarrousel">
+            <app-carrousel
+              *ngIf="artistas"
+              [artistasC]="artistas"
+            ></app-carrousel>
+          </div>
+        </div>
+      </div>
     </div>
 
     <div class="Menu-container Menu-container--contenedor3 overflow-hidden">
-      <div class="Menu-detail container h-auto py-5">
-        <div
-          #menu3
-          class="Menu-row Menu-row--info row shadow-lg rounded-3 mb-5"
-        >
-          <div class="Menu-info col-xl-6 p-5">
-            <h2 class="Menu-h2 Menu-h2--contenedor2 mb-5 text-start">
-              Que podrás hacer aquí ?
-            </h2>
-            <p class="Menu-p Menu-p--advertisements">
+      <div class="Menu-detail container h-auto p-5">
+        <div #menu3 class="Menu-row Menu-row--info row rounded-3">
+          <div class="Menu-info col-xl-6 py-5">
+            <h2 class="fw-bold fs-1 text-start">Que podrás hacer aquí ?</h2>
+            <p class="Menu-p">
               Esta página recopila los últimos éxitos más sonados de Spotify,
               también puedes buscar tus artitas favoritas y escuchar su música
               más sonada desde aquí, esta página está hecha sin fines de lucro,
@@ -77,10 +91,10 @@
           </div>
         </div>
 
-        <div class="Menu-row Menu-row--targets row">
+        <div class="Menu-row Menu-row--targets row gap-5">
           <div
             #menu3
-            class="Menu-col col-md-5 me-2 shadow-lg rounded-3 rounded-3 p-5 bg-danger"
+            class="Menu-col col-md-5 me-2 shadow-lg rounded-3 rounded-3 p-4 p-md-5 bg-danger"
           >
             <p class="Menu-p Menu-p--advertisements fw-bold">
               Marca como favoritos a los artistas que te marcaron.
@@ -99,14 +113,14 @@
 
           <div
             #menu3
-            class="Menu-col col-md-5 shadow-lg rounded-3 p-5 mx-auto bg-success d-flex flex-column align-items-center"
+            class="Menu-col col-md-5 shadow-lg rounded-3 p-4 p-md-5 mx-auto bg-success d-flex flex-column align-items-center"
           >
             <img
               alt="imgArtista3"
               [src]="artistas[15].images[0].url"
               class="Menu-img Menu-img--contenedor2 rounded-3"
             />
-            <p class="Menu-p Menu-p--advertisements mt-3">
+            <p class="Menu-p mt-3">
               Agranda tu lista de canciones favoritas con las recomendaciones
               inspiradas en lo que te gusta escuchar.
             </p>

@@ -24,9 +24,7 @@ import {
 export class CarrouselComponent implements OnInit {
   @Input('artistasC') images: any[] = [];
 
-  ngOnInit(): void {
-    console.log(this.images);
-  }
+  ngOnInit(): void {}
 
   onSlide(slideEvent: NgbSlideEvent) {
     console.log(slideEvent);
