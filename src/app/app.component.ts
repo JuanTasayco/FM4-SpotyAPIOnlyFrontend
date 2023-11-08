@@ -17,7 +17,7 @@ export class AppComponent implements OnInit {
     gsap.ticker.add((time) => {
       lenis.raf(time * 1000);
     });
-
+    gsap.registerPlugin(ScrollTrigger);
     gsap.ticker.lagSmoothing(0);
   }
 }

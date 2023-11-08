@@ -1,0 +1,16 @@
+<ngb-carousel *ngIf="images" class="Carousel rounded">
+  <ng-template ngbSlide *ngFor="let artist of images; let i = index">
+    <div class="picsum-img-wrapper relative">
+      <img
+        [src]="artist.images[0].url"
+        [alt]="'slider nuber' + i"
+        class="Carousel-img w-100 opacity-25 rounded"
+      />
+    </div>
+    <div class="carousel-caption">
+      <p class=" fw-bold">{{ artist.artists[0].name }}</p>
+
+      <p>{{ artist.name | titlecase }}</p>
+    </div>
+  </ng-template>
+</ngb-carousel>

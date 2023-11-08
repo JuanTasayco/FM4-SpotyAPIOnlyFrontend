@@ -3,11 +3,8 @@ import {
   ChangeDetectorRef,
   Component,
   ElementRef,
-  HostListener,
   OnInit,
-  QueryList,
   ViewChild,
-  ViewChildren,
 } from '@angular/core';
 import { SpotifyService } from '../../services/spotify.service';
 import { gsap } from 'gsap';
@@ -20,9 +17,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class PrincipalComponent implements OnInit, AfterViewInit {
   artistas: any[] = [];
   SpinnerIsActive: boolean = false;
-  posArray: number = 0;
-  /* controlo la activacion de botones a cuando termina de pasar una imagen, porque si el usuario da clicks muy rapido la animación de gsap se interrumpe */
-  desactivarControles: boolean = false;
 
   ngAfterViewInit(): void {
     /* logica para scrollanimations de contenedores */
@@ -35,29 +29,12 @@ export class PrincipalComponent implements OnInit, AfterViewInit {
         this.SpinnerIsActive = false;
         this.artistas = albums;
         if (this.artistas.length > 0) {
-          this.cdr.detectChanges();
+ /*          this.cdr.detectChanges();
           this.firstAnimationForPresentPage();
-          this.animationScrollFirsContainer();
-          this.animationScrollSecondContainer();
-          this.animationScrollThirdContainer();
+          this.animationScrollFirsContainer(); */
         }
       });
     });
-    gsap.registerPlugin(ScrollTrigger);
-  }
-
-  moveLeftMenu() {
-    if (this.posArray == 0) this.posArray = 20;
-    this.posArray--;
-    this.desactivarControles = true;
-    this.animationFromBannerImages();
-  }
-
-  moveRightMenu() {
-    if (this.posArray == 19) this.posArray = -1;
-    this.posArray++;
-    this.desactivarControles = true;
-    this.animationFromBannerImages();
   }
 
   redirectToArtist(contenido: any) {
@@ -70,16 +47,6 @@ export class PrincipalComponent implements OnInit, AfterViewInit {
 
   redirectToSearchArtist() {
     this.router.navigate(['/spotify/buscar']);
-  }
-
-  @ViewChild('imagenContenedor') imagenArtista!: ElementRef<HTMLElement>;
-  animationFromBannerImages() {
-    gsap.from(this.imagenArtista.nativeElement, {
-      scale: 0.5,
-      onComplete: () => {
-        this.desactivarControles = false;
-      },
-    });
   }
 
   @ViewChild('imgPrincipal') imgSpotify!: ElementRef<HTMLElement>;
@@ -162,59 +129,6 @@ export class PrincipalComponent implements OnInit, AfterViewInit {
         scrub: true,
       });
     }, 2000);
-  }
-
-  /* animation secondContainer (albums) */
-  @ViewChild('contenedor2') secondContainer!: ElementRef<HTMLElement>;
-  @ViewChild('rowSecondContainer') rowContainer!: ElementRef<HTMLElement>;
-  animationScrollSecondContainer() {
-    setTimeout(() => {
-      /*  const containerAnimation = gsap.from(this.secondContainer.nativeElement, {
-        opacity: 1,
-        scale: 0.9,
-        duration: 0.7,
-      });
-
-      */
-      /*    ScrollTrigger.create({
-        trigger: this.secondContainer.nativeElement,
-        start: 'top top',
-        end: 'bottom top',
-        toggleActions: 'play reverse play reverse ',
-        snap: 1,
-      }); */
-    }, 200);
-  }
-
-  @ViewChild('contenedor3') thirdContainer!: ElementRef<HTMLElement>;
-  @ViewChildren('menu3') containers3!: QueryList<ElementRef<HTMLElement>>;
-  animationScrollThirdContainer() {
-    setTimeout(() => {
-      this.containers3.forEach((elemento, index) => {
-        if (index == 0) {
-          gsap.from(elemento.nativeElement, {
-            opacity: 0,
-            scrollTrigger: {
-              scrub: 1,
-              trigger: this.thirdContainer.nativeElement,
-              start: 'top bottom',
-              end: 'bottom bottom',
-            },
-          });
-        } else {
-          gsap.from(elemento.nativeElement, {
-            opacity: 0,
-            y: '50%',
-            scrollTrigger: {
-              scrub: 1,
-              trigger: this.thirdContainer.nativeElement,
-              start: 'top 70%',
-              end: 'bottom center',
-            },
-          });
-        }
-      });
-    }, 200);
   }
 
   constructor(

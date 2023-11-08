@@ -1,0 +1,14 @@
+@use "src/_custom" as *;
+.Carousel {
+  width: min(98%, 1570px);
+  margin: auto;
+  &-img {
+    max-height: 40rem;
+    object-fit: cover;
+  }
+
+  &-btn {
+    background-color: #065f46;
+    color: white;
+  }
+}

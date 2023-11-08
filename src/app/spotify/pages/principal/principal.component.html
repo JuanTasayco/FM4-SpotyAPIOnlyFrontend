@@ -1,6 +1,7 @@
 <app-spinner *ngIf="SpinnerIsActive"></app-spinner>
-<app-navbar></app-navbar>
+
 <div class="Menu" *ngIf="artistas.length > 0">
+  <app-navbar></app-navbar>
   <main class="Menu-principal">
     <div class="Menu-container Menu-container--animation">
       <div class="Menu-hero">
@@ -45,79 +46,11 @@
       </div>
     </div>
 
-    <div
-      #contenedor2
-      [ngStyle]="{
-        'background-image': 'url(' + artistas[posArray].images[0].url + ')'
-      }"
-      class="Menu-container Menu-artist--background rounded-3 overflow-hidden"
-    >
-      <div class="Menu-row Menu-row--background row mx-auto">
-        <div class="Menu-content Menu-content--artist col-md-6 p-5 m-0">
-          <img
-            #imagenContenedor
-            [src]="artistas[posArray].images[0].url"
-            alt="principal"
-            class="img-fluid m-auto shadow-lg rounded-3"
-          />
-        </div>
-        <div class="Menu-content Menu-content--description col-md-6">
-          <h1 class="Menu-h1">{{ artistas[posArray].name }}</h1>
-          <h2 class="Menu-h2">-{{ artistas[posArray].artists[0].name }}</h2>
-          <button
-            (click)="redirectToArtist(artistas[posArray])"
-            class="Menu-button btn btn-success mt-4 mx-auto"
-          >
-            Escuchar ahora
-          </button>
-        </div>
-      </div>
-
-      <button
-        (click)="moveLeftMenu()"
-        class="Menu-controls Menu-controls--leftCarrousel btn"
-        [disabled]="desactivarControles"
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="50"
-          height="50"
-          fill="white"
-          class="shadow-lg rounded-5 p-3 Menu-svg"
-          viewBox="0 0 16 16"
-        >
-          <path
-            fill-rule="evenodd"
-            d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"
-          />
-        </svg>
-      </button>
-
-      <button
-        (click)="moveRightMenu()"
-        class="Menu-controls Menu-controls--rightCarrousel btn"
-        [disabled]="desactivarControles"
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="50"
-          height="50"
-          fill="white"
-          class="shadow-lg rounded-5 p-3 Menu-svg"
-          viewBox="0 0 16 16"
-        >
-          <path
-            fill-rule="evenodd"
-            d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"
-          />
-        </svg>
-      </button>
+    <div class="Menu-carousel">
+      <app-carrousel *ngIf="artistas" [artistasC]="artistas"></app-carrousel>
     </div>
 
-    <div
-      #contenedor3
-      class="Menu-container Menu-container--contenedor3 overflow-hidden"
-    >
+    <div class="Menu-container Menu-container--contenedor3 overflow-hidden">
       <div class="Menu-detail container h-auto py-5">
         <div
           #menu3
@@ -182,7 +115,7 @@
       </div>
     </div>
 
-    <div #contenedor4 class="Menu-container Menu-container--cards">
+    <div class="Menu-container Menu-container--cards">
       <app-cards [contenidos]="artistas"></app-cards>
     </div>
 
