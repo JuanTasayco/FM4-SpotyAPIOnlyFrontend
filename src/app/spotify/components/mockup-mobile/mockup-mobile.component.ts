@@ -5,7 +5,7 @@ import { Component, Input } from '@angular/core';
   standalone: true,
   imports: [],
   templateUrl: './mockup-mobile.component.html',
-  styleUrls: ['./mockup-mobile.component.scss'],
+  styleUrls: [],
 })
 export class MockupMobileComponent {
   @Input() imageMockup: string = '';

@@ -19,7 +19,7 @@ import {
   imports: [NgFor, NgClass, NgIf, NgbCarouselModule, TitleCasePipe],
   providers: [NgbCarouselConfig],
   templateUrl: './carrousel.component.html',
-  styleUrls: ['./carrousel.component.scss'],
+  styleUrls: [],
 })
 export class CarrouselComponent implements OnInit {
   @Input('artistasC') images: any[] = [];

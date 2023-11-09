@@ -6,6 +6,8 @@
 @use "./app/spotify/pages/artista/artista.component";
 @use "./app/spotify/components/spinner/spinner.component";
 @use "./app/shared/footer/footer.component";
+@use "./app/spotify/components/mockup-mobile/mockup-mobile.component";
+@use "./app/spotify/components/carrousel/carrousel.component";
 
 html.lenis {
   height: auto;
