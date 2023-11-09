@@ -4,7 +4,9 @@ import {
   Component,
   ElementRef,
   OnInit,
+  QueryList,
   ViewChild,
+  ViewChildren,
 } from '@angular/core';
 import { SpotifyService } from '../../services/spotify.service';
 import { gsap } from 'gsap';
@@ -15,11 +17,16 @@ import { ActivatedRoute, Router } from '@angular/router';
   templateUrl: './principal.component.html',
 })
 export class PrincipalComponent implements OnInit, AfterViewInit {
+  @ViewChild('containerMockupMobiles')
+  containerMockupMobile!: ElementRef<HTMLElement>;
+  @ViewChildren('phoneMockup') phonesMockup!: QueryList<ElementRef>;
+
   artistas: any[] = [];
   SpinnerIsActive: boolean = false;
 
   ngAfterViewInit(): void {
     /* logica para scrollanimations de contenedores */
+    this.animationScrollFirsContainer();
   }
 
   ngOnInit(): void {
@@ -29,9 +36,9 @@ export class PrincipalComponent implements OnInit, AfterViewInit {
         this.SpinnerIsActive = false;
         this.artistas = albums;
         if (this.artistas.length > 0) {
- /*          this.cdr.detectChanges();
+          /*          this.cdr.detectChanges();
           this.firstAnimationForPresentPage();
-          this.animationScrollFirsContainer(); */
+          */
         }
       });
     });
@@ -113,22 +120,24 @@ export class PrincipalComponent implements OnInit, AfterViewInit {
   }
 
   /* animation firstContainer (front)*/
-  @ViewChild('contenedor1') firstContainer!: ElementRef<HTMLElement>;
+
   animationScrollFirsContainer() {
+ 
     setTimeout(() => {
-      const phones = gsap.utils.toArray('.phoneS');
-      const phonesAnimation = gsap.to(phones, {
-        y: '-100',
+      this.phonesMockup.forEach(({ nativeElement: el }) => {
+        gsap.to(el, {
+          y: '-100',
+          scrollTrigger: {
+            trigger: this.containerMockupMobile.nativeElement,
+            start: `start 40%`,
+            end: 'bottom 15%',
+            scrub: true,
+          },
+        });
       });
-      /* ideal segun yo 150 mobile, 100 normal para el start */
-      ScrollTrigger.create({
-        trigger: this.firstContainer.nativeElement,
-        start: `start 40%`,
-        end: 'bottom 15%',
-        animation: phonesAnimation,
-        scrub: true,
-      });
-    }, 2000);
+    },2000);
+
+    /* ideal segun yo 150 mobile, 100 normal para el start */
   }
 
   constructor(

@@ -60,7 +60,7 @@
     width: min(90%, 990px);
   }
 
-  &-banner {
+  &-mobiles {
     display: flex;
     justify-content: center;
     padding: 5rem 0;
@@ -168,9 +168,11 @@
     letter-spacing: -1px;
     font-size: clamp(0.9rem, 3vw, 3rem);
     color: white;
-/*     &--hero {
-      font-size: clamp(1.5rem, 3.5vw, 4.5rem);
-    } */
+    &--title {
+      @include media-breakpoint-up(xxl) {
+        font-size: 4rem;
+      }
+    }
     &--contenedor2 {
       font-weight: bold;
       font-size: clamp(1.2rem, 2vw, 2.5rem);

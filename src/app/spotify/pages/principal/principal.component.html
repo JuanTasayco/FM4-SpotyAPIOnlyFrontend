@@ -13,31 +13,36 @@
         />
         <small #textSpotify class="fw-bold fs-5">Spotify</small>
         <div class="contenido text-center">
-          <h2 class="Menu-h2 fs-1 fw-boldwer">Sumérgete en el sonido.</h2>
+          <h2 class="Menu-h2 Menu-h2--title fw-boldwer">
+            Sumérgete en el sonido.
+          </h2>
           <button
             (click)="redirectToSearchArtist()"
-            class="Menu-button btn mt-2 py-3 rounded-5 px-3"
+            class="Menu-button btn mt-3 py-3 rounded-5 px-4"
           >
             Busca tu música favorita
           </button>
         </div>
       </div>
-      <div #contenedor1 class="Menu-banner contenido overflow-hidden">
+      <div
+        #containerMockupMobiles
+        class="Menu-mobiles contenido overflow-hidden"
+      >
         <app-mockup-mobile
           class="mt-5"
           [imageMockup]="'assets/phone1.png'"
-          #imgPhone
+          #phoneMockup
         ></app-mockup-mobile>
 
         <app-mockup-mobile
           [imageMockup]="'assets/phone2.png'"
-          #imgPhone
+          #phoneMockup
         ></app-mockup-mobile>
 
         <app-mockup-mobile
           class="mt-5"
           [imageMockup]="'assets/phone3.png'"
-          #imgPhone
+          #phoneMockup
         ></app-mockup-mobile>
       </div>
     </div>
@@ -82,7 +87,7 @@
           </div>
           <div class="Menu-imgSec col-xl-6 p-2">
             <img
-              [src]="artistas[11].images[0].url"
+              [src]="artistas[4].images[0].url"
               alt="imgArtista"
               class="Menu-img Menu-img--contenedor2 img-fluid rounded-3 shadow-lg"
             />
