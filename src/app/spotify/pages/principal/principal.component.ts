@@ -26,7 +26,7 @@ export class PrincipalComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit(): void {
     /* logica para scrollanimations de contenedores */
-    this.animationScrollFirsContainer();
+    this.animationScrollPhonesMockup();
   }
 
   ngOnInit(): void {
@@ -56,22 +56,22 @@ export class PrincipalComponent implements OnInit, AfterViewInit {
     this.router.navigate(['/spotify/buscar']);
   }
 
-  @ViewChild('imgPrincipal') imgSpotify!: ElementRef<HTMLElement>;
+  @ViewChild('logoSpotify') logoSpotify!: ElementRef<HTMLElement>;
   @ViewChild('textSpotify') textSpotify!: ElementRef<HTMLElement>;
   /*  @HostListener('window:resize', []) */
-  firstAnimationForPresentPage() {
+  animationSpotifyLogo() {
     const tl = gsap.timeline({});
-    gsap.set(this.imgSpotify.nativeElement, {
+    gsap.set(this.logoSpotify.nativeElement, {
       y: '400%',
       scale: window.innerWidth < 576 ? 2 : 4,
       opacity: 0,
     });
 
-    tl.to(this.imgSpotify.nativeElement, {
+    tl.to(this.logoSpotify.nativeElement, {
       duration: 1.2,
       opacity: 1,
     })
-      .to(this.imgSpotify.nativeElement, {
+      .to(this.logoSpotify.nativeElement, {
         y: '0',
         scale: 1,
         duration: 1,
@@ -95,7 +95,7 @@ export class PrincipalComponent implements OnInit, AfterViewInit {
         });
       } else {
         /* controlar los telefonos de la portada */
-        const phones: Array<HTMLElement> = gsap.utils.toArray('.phoneS');
+        const phones: Array<HTMLElement> = gsap.utils.toArray('.mobileMockup');
         gsap.from(element, {
           delay: 0.7,
           y: `${altoMenu}px`,
@@ -121,21 +121,22 @@ export class PrincipalComponent implements OnInit, AfterViewInit {
 
   /* animation firstContainer (front)*/
 
-  animationScrollFirsContainer() {
- 
-    setTimeout(() => {
-      this.phonesMockup.forEach(({ nativeElement: el }) => {
-        gsap.to(el, {
+  animationScrollPhonesMockup() {
+    console.log(this.containerMockupMobile.nativeElement);
+    this.phonesMockup.forEach((item, index) => {
+      if (index !== 1) {
+        gsap.to(item.nativeElement, {
           y: '-100',
           scrollTrigger: {
             trigger: this.containerMockupMobile.nativeElement,
-            start: `start 40%`,
-            end: 'bottom 15%',
+            start: `start center`,
+            end: 'center center',
             scrub: true,
+            markers: true,
           },
         });
-      });
-    },2000);
+      }
+    });
 
     /* ideal segun yo 150 mobile, 100 normal para el start */
   }

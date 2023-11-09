@@ -1,12 +1,12 @@
 <app-spinner *ngIf="SpinnerIsActive"></app-spinner>
 
-<div class="Menu" *ngIf="artistas.length > 0">
+<div class="Menu">
   <app-navbar></app-navbar>
   <main class="Menu-principal">
     <div class="Menu-container Menu-container--animation">
-      <div class="Menu-hero">
+      <div class="Menu-hero" style="border: 2px solid green">
         <img
-          #imgPrincipal
+          #logoSpotify
           src="assets/img/banner-ico.png"
           alt=""
           class="Menu-img Menu-img--animation"
@@ -28,22 +28,24 @@
         #containerMockupMobiles
         class="Menu-mobiles contenido overflow-hidden"
       >
-        <app-mockup-mobile
-          class="mt-5"
-          [imageMockup]="'assets/phone1.png'"
-          #phoneMockup
-        ></app-mockup-mobile>
+        <div id="mobileMockup" #phoneMockup>
+          <app-mockup-mobile
+            class="mt-5"
+            [imageMockup]="'assets/phone1.png'"
+          ></app-mockup-mobile>
+        </div>
+        <div id="mobileMockup" #phoneMockup>
+          <app-mockup-mobile
+            [imageMockup]="'assets/phone2.png'"
+          ></app-mockup-mobile>
+        </div>
 
-        <app-mockup-mobile
-          [imageMockup]="'assets/phone2.png'"
-          #phoneMockup
-        ></app-mockup-mobile>
-
-        <app-mockup-mobile
-          class="mt-5"
-          [imageMockup]="'assets/phone3.png'"
-          #phoneMockup
-        ></app-mockup-mobile>
+        <div id="mobileMockup" #phoneMockup>
+          <app-mockup-mobile
+            class="mt-5"
+            [imageMockup]="'assets/phone3.png'"
+          ></app-mockup-mobile>
+        </div>
       </div>
     </div>
 
@@ -73,7 +75,7 @@
     </div>
 
     <div class="Menu-container Menu-container--contenedor3 overflow-hidden">
-      <div class="Menu-detail container h-auto p-5">
+      <div class="Menu-detail container h-auto p-5" *ngIf="artistas.length > 0">
         <div #menu3 class="Menu-row Menu-row--info row rounded-3">
           <div class="Menu-info col-xl-6 py-5">
             <h2 class="fw-bold fs-1 text-start">Que podrás hacer aquí ?</h2>
