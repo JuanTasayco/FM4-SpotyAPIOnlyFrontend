@@ -11,11 +11,9 @@
           alt=""
           class="Menu-img Menu-img--animation"
         />
-        <small #textSpotify class="fw-bold">Spotify</small>
+        <small #textSpotify class="fw-bold fs-5">Spotify</small>
         <div class="contenido text-center">
-          <h2 class="Menu-h2 Menu-h2--hero fw-boldwer">
-            Sumérgete en el sonido.
-          </h2>
+          <h2 class="Menu-h2 fs-1 fw-boldwer">Sumérgete en el sonido.</h2>
           <button
             (click)="redirectToSearchArtist()"
             class="Menu-button btn mt-2 py-3 rounded-5 px-3"
@@ -27,12 +25,12 @@
       <div #contenedor1 class="Menu-banner contenido overflow-hidden">
         <app-mockup-mobile
           class="mt-5"
-          [imageMockup]="'assets/phone3.png'"
+          [imageMockup]="'assets/phone1.png'"
           #imgPhone
         ></app-mockup-mobile>
 
         <app-mockup-mobile
-          [imageMockup]="'assets/phone3.png'"
+          [imageMockup]="'assets/phone2.png'"
           #imgPhone
         ></app-mockup-mobile>
 
@@ -94,7 +92,7 @@
         <div class="Menu-row Menu-row--targets row gap-5">
           <div
             #menu3
-            class="Menu-col col-md-5 me-2 shadow-lg rounded-3 rounded-3 p-4 p-md-5 bg-danger"
+            class="Menu-col col-md-5 me-2 shadow-lg rounded-3 rounded-3 p-4 p-md-5 border"
           >
             <p class="Menu-p Menu-p--advertisements fw-bold">
               Marca como favoritos a los artistas que te marcaron.
@@ -113,7 +111,7 @@
 
           <div
             #menu3
-            class="Menu-col col-md-5 shadow-lg rounded-3 p-4 p-md-5 mx-auto bg-success d-flex flex-column align-items-center"
+            class="Menu-col col-md-5 shadow-lg rounded-3 p-4 p-md-5 mx-auto border d-flex flex-column align-items-center"
           >
             <img
               alt="imgArtista3"
