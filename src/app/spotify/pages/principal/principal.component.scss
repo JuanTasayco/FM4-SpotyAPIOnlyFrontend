@@ -35,18 +35,11 @@
     height: 100%;
     width: 100%;
     box-sizing: border-box;
-
+    height: auto;
     &--animation {
       height: auto;
       padding-top: 5%;
       overflow: hidden;
-    }
-    &--cards {
-      height: auto;
-    }
-
-    &--contenedor3 {
-      height: auto;
     }
   }
 

@@ -75,8 +75,14 @@
         </div>
       </div>
 
-      <div class="Menu-container Menu-container--contenedor3 overflow-hidden">
-        <div class="Menu-detail container h-auto p-5">
+      <div
+        style="border: 2px solid green"
+        class="Menu-container Menu-container--horizontal overflow-hidden"
+      >
+        <div
+          class="Menu-detail container h-auto p-5"
+          style="border: 2px solid red"
+        >
           <div class="Menu-row Menu-row--info row rounded-3">
             <div class="Menu-info col-xl-6 py-5">
               <h2 class="fw-bold fs-1 text-start">Que podrás hacer aquí ?</h2>
@@ -99,7 +105,6 @@
 
           <div class="Menu-row Menu-row--targets row gap-5">
             <div
-              #menu3
               class="Menu-col col-md-5 me-2 shadow-lg rounded-3 rounded-3 p-4 p-md-5 border"
             >
               <p class="Menu-p Menu-p--advertisements fw-bold">
@@ -118,7 +123,6 @@
             </div>
 
             <div
-              #menu3
               class="Menu-col col-md-5 shadow-lg rounded-3 p-4 p-md-5 mx-auto border d-flex flex-column align-items-center"
             >
               <img
@@ -132,11 +136,11 @@
               </p>
             </div>
           </div>
-        </div>
-      </div>
 
-      <div class="Menu-container Menu-container--cards">
-        <app-cards [contenidos]="artistas"></app-cards>
+          <div class="Menu-row">
+            <app-cards [contenidos]="artistas"></app-cards>
+          </div>
+        </div>
       </div>
 
       <footer class="bottom-0">

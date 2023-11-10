@@ -42,9 +42,9 @@ export class PrincipalComponent
       observ.subscribe((albums: Artists[]) => {
         this.spinnerIsActive = false;
         this.artistas = albums;
-        window.scrollTo(0, 0);
+   /*      window.scrollTo(0, 0);
         this.animationSpotifyLogo();
-        this.animationScrollPhonesMockup();
+        this.animationScrollPhonesMockup(); */
       });
     });
   }
