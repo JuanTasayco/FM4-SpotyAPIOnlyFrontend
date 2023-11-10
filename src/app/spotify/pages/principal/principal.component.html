@@ -1,10 +1,10 @@
-<app-spinner *ngIf="SpinnerIsActive"></app-spinner>
+<app-spinner *ngIf="spinnerIsActive"></app-spinner>
 
 <div class="Menu">
   <app-navbar></app-navbar>
   <main class="Menu-principal">
     <div class="Menu-container Menu-container--animation">
-      <div class="Menu-hero" style="border: 2px solid green">
+      <div class="Menu-hero">
         <img
           #logoSpotify
           src="assets/img/banner-ico.png"
@@ -12,7 +12,7 @@
           class="Menu-img Menu-img--animation"
         />
         <small #textSpotify class="fw-bold fs-5">Spotify</small>
-        <div class="contenido text-center">
+        <div class="Menu-title contenido text-center">
           <h2 class="Menu-h2 Menu-h2--title fw-boldwer">
             Sumérgete en el sonido.
           </h2>
@@ -49,97 +49,100 @@
       </div>
     </div>
 
-    <div class="Menu-carousel">
-      <div class="row m-0 p-0 justify-content-center align-items-center">
-        <div class="col-12 col-md-6 col-xl-5 p-5">
-          <h2 class="fw-bold fs-1">
-            Reproduce y escucha lo mejor de nuestro repertorio
-            <!-- Making earth cooler for people, nature, climate -->
-          </h2>
-          <p class="text-carrousel mt-5">
-            Deja que te mostremos los artistas más sonados del momento, además
-            podrás buscar a tu artista favorito, si no deseas un preview de la
-            canción redirigete a la página oficial rapidamente.
-          </p>
-          <button class="btn btn-success fw-bold mt-5">Buscar ahora</button>
-        </div>
-        <div class="col-12 col-md-6 col-xl-7 p-5">
-          <div class="Menu-appCarrousel">
-            <app-carrousel
-              *ngIf="artistas"
-              [artistasC]="artistas"
-            ></app-carrousel>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="Menu-container Menu-container--contenedor3 overflow-hidden">
-      <div class="Menu-detail container h-auto p-5" *ngIf="artistas.length > 0">
-        <div #menu3 class="Menu-row Menu-row--info row rounded-3">
-          <div class="Menu-info col-xl-6 py-5">
-            <h2 class="fw-bold fs-1 text-start">Que podrás hacer aquí ?</h2>
-            <p class="Menu-p">
-              Esta página recopila los últimos éxitos más sonados de Spotify,
-              también puedes buscar tus artitas favoritas y escuchar su música
-              más sonada desde aquí, esta página está hecha sin fines de lucro,
-              está construida para de alguna forma u otra compartir la buena
-              música que contiene Spotify.
+    <section *ngIf="artistas">
+      <div class="Menu-carousel">
+        <div class="row m-0 p-0 justify-content-center align-items-center">
+          <div class="col-12 col-md-6 col-xl-5 p-5">
+            <h2 class="fw-bold fs-1">
+              Reproduce y escucha lo mejor de nuestro repertorio
+              <!-- Making earth cooler for people, nature, climate -->
+            </h2>
+            <p class="text-carrousel mt-5">
+              Deja que te mostremos los artistas más sonados del momento, además
+              podrás buscar a tu artista favorito, si no deseas un preview de la
+              canción redirigete a la página oficial rapidamente.
             </p>
+            <button class="btn btn-success fw-bold mt-5">Buscar ahora</button>
           </div>
-          <div class="Menu-imgSec col-xl-6 p-2">
-            <img
-              [src]="artistas[4].images[0].url"
-              alt="imgArtista"
-              class="Menu-img Menu-img--contenedor2 img-fluid rounded-3 shadow-lg"
-            />
-          </div>
-        </div>
-
-        <div class="Menu-row Menu-row--targets row gap-5">
-          <div
-            #menu3
-            class="Menu-col col-md-5 me-2 shadow-lg rounded-3 rounded-3 p-4 p-md-5 border"
-          >
-            <p class="Menu-p Menu-p--advertisements fw-bold">
-              Marca como favoritos a los artistas que te marcaron.
-            </p>
-            <p class="Menu-p Menu-p--advertisements">
-              Arma tu lista de los artistas que más te emocionan y recibe
-              actualizaciones automáticas sobre nuevos lanzamientos y
-              recomendaciones a la altura.
-            </p>
-            <img
-              alt="imgArtista2"
-              [src]="artistas[5].images[0].url"
-              class="Menu-img Menu-img--contenedor2 mx-auto rounded-3"
-            />
-          </div>
-
-          <div
-            #menu3
-            class="Menu-col col-md-5 shadow-lg rounded-3 p-4 p-md-5 mx-auto border d-flex flex-column align-items-center"
-          >
-            <img
-              alt="imgArtista3"
-              [src]="artistas[15].images[0].url"
-              class="Menu-img Menu-img--contenedor2 rounded-3"
-            />
-            <p class="Menu-p mt-3">
-              Agranda tu lista de canciones favoritas con las recomendaciones
-              inspiradas en lo que te gusta escuchar.
-            </p>
+          <div class="col-12 col-md-6 col-xl-7 p-5">
+            <div class="Menu-appCarrousel">
+              <app-carrousel
+                *ngIf="artistas"
+                [artistasC]="artistas"
+              ></app-carrousel>
+            </div>
           </div>
         </div>
       </div>
-    </div>
 
-    <div class="Menu-container Menu-container--cards">
-      <app-cards [contenidos]="artistas"></app-cards>
-    </div>
+      <div class="Menu-container Menu-container--contenedor3 overflow-hidden">
+        <div class="Menu-detail container h-auto p-5">
+          <div class="Menu-row Menu-row--info row rounded-3">
+            <div class="Menu-info col-xl-6 py-5">
+              <h2 class="fw-bold fs-1 text-start">Que podrás hacer aquí ?</h2>
+              <p class="Menu-p">
+                Esta página recopila los últimos éxitos más sonados de Spotify,
+                también puedes buscar tus artitas favoritas y escuchar su música
+                más sonada desde aquí, esta página está hecha sin fines de
+                lucro, está construida para de alguna forma u otra compartir la
+                buena música que contiene Spotify.
+              </p>
+            </div>
+            <div class="Menu-imgSec col-xl-6 p-2">
+              <img
+                [src]="artistas[4].images[0].url"
+                alt="imgArtista"
+                class="Menu-img Menu-img--contenedor2 img-fluid rounded-3 shadow-lg"
+              />
+            </div>
+          </div>
 
-    <footer class="bottom-0">
-      <app-footer></app-footer>
-    </footer>
+          <div class="Menu-row Menu-row--targets row gap-5">
+            <div
+              #menu3
+              class="Menu-col col-md-5 me-2 shadow-lg rounded-3 rounded-3 p-4 p-md-5 border"
+            >
+              <p class="Menu-p Menu-p--advertisements fw-bold">
+                Marca como favoritos a los artistas que te marcaron.
+              </p>
+              <p class="Menu-p Menu-p--advertisements">
+                Arma tu lista de los artistas que más te emocionan y recibe
+                actualizaciones automáticas sobre nuevos lanzamientos y
+                recomendaciones a la altura.
+              </p>
+              <img
+                alt="imgArtista2"
+                [src]="artistas[5].images[0].url"
+                class="Menu-img Menu-img--contenedor2 mx-auto rounded-3"
+              />
+            </div>
+
+            <div
+              #menu3
+              class="Menu-col col-md-5 shadow-lg rounded-3 p-4 p-md-5 mx-auto border d-flex flex-column align-items-center"
+            >
+              <img
+                alt="imgArtista3"
+                [src]="artistas[15].images[0].url"
+                class="Menu-img Menu-img--contenedor2 rounded-3"
+              />
+              <p class="Menu-p mt-3">
+                Agranda tu lista de canciones favoritas con las recomendaciones
+                inspiradas en lo que te gusta escuchar.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="Menu-container Menu-container--cards">
+        <app-cards [contenidos]="artistas"></app-cards>
+      </div>
+
+      <footer class="bottom-0">
+        <app-footer></app-footer>
+      </footer>
+    </section>
   </main>
+  <ng-template />
 </div>

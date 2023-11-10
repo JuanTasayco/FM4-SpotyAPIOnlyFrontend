@@ -1,4 +1,5 @@
 import {
+  AfterViewChecked,
   AfterViewInit,
   ChangeDetectorRef,
   Component,
@@ -12,37 +13,43 @@ import { SpotifyService } from '../../services/spotify.service';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Artists } from '../../interfaces/spotify.interface';
 @Component({
   selector: 'app-principal',
   templateUrl: './principal.component.html',
 })
-export class PrincipalComponent implements OnInit, AfterViewInit {
+export class PrincipalComponent
+  implements OnInit, AfterViewInit, AfterViewChecked
+{
   @ViewChild('containerMockupMobiles')
   containerMockupMobile!: ElementRef<HTMLElement>;
   @ViewChildren('phoneMockup') phonesMockup!: QueryList<ElementRef>;
 
-  artistas: any[] = [];
-  SpinnerIsActive: boolean = false;
+  @ViewChild('logoSpotify') logoSpotify!: ElementRef<HTMLElement>;
+  @ViewChild('textSpotify') textSpotify!: ElementRef<HTMLElement>;
+
+  artistas!: Artists[];
+  spinnerIsActive: boolean = false;
 
   ngAfterViewInit(): void {
     /* logica para scrollanimations de contenedores */
-    this.animationScrollPhonesMockup();
   }
 
   ngOnInit(): void {
-    this.SpinnerIsActive = true;
+    this.spinnerIsActive = true;
+
     this.spotiService.getNewRelease().then((observ) => {
-      observ.subscribe((albums: any) => {
-        this.SpinnerIsActive = false;
+      observ.subscribe((albums: Artists[]) => {
+        this.spinnerIsActive = false;
         this.artistas = albums;
-        if (this.artistas.length > 0) {
-          /*          this.cdr.detectChanges();
-          this.firstAnimationForPresentPage();
-          */
-        }
+        window.scrollTo(0, 0);
+        this.animationSpotifyLogo();
+        this.animationScrollPhonesMockup();
       });
     });
   }
+
+  ngAfterViewChecked(): void {}
 
   redirectToArtist(contenido: any) {
     if (contenido.type === 'artist') {
@@ -56,9 +63,6 @@ export class PrincipalComponent implements OnInit, AfterViewInit {
     this.router.navigate(['/spotify/buscar']);
   }
 
-  @ViewChild('logoSpotify') logoSpotify!: ElementRef<HTMLElement>;
-  @ViewChild('textSpotify') textSpotify!: ElementRef<HTMLElement>;
-  /*  @HostListener('window:resize', []) */
   animationSpotifyLogo() {
     const tl = gsap.timeline({});
     gsap.set(this.logoSpotify.nativeElement, {
@@ -95,34 +99,34 @@ export class PrincipalComponent implements OnInit, AfterViewInit {
         });
       } else {
         /* controlar los telefonos de la portada */
-        const phones: Array<HTMLElement> = gsap.utils.toArray('.mobileMockup');
         gsap.from(element, {
           delay: 0.7,
           y: `${altoMenu}px`,
           duration: 1.8,
         });
 
-        /* controlar animación de los telefonos  */
-        gsap.from(phones[0], {
-          delay: 1.5,
-          rotateX: '20',
-          translateX: '-40%',
-          duration: 1.5,
-        });
-        gsap.from(phones[1], {
-          delay: 1.5,
-          rotateX: '20',
-          translateX: '40%',
-          duration: 1.5,
+        this.phonesMockup.forEach(({ nativeElement: phone }, index) => {
+          if (index == 0) {
+            gsap.from(phone, {
+              delay: 1.5,
+              rotateX: '20',
+              translateX: '-40%',
+              duration: 1.5,
+            });
+          } else if (index == 2) {
+            gsap.from(phone, {
+              delay: 1.5,
+              rotateX: '20',
+              translateX: '40%',
+              duration: 1.5,
+            });
+          }
         });
       }
     });
   }
 
-  /* animation firstContainer (front)*/
-
   animationScrollPhonesMockup() {
-    console.log(this.containerMockupMobile.nativeElement);
     this.phonesMockup.forEach((item, index) => {
       if (index !== 1) {
         gsap.to(item.nativeElement, {
