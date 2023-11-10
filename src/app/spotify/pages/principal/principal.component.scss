@@ -1,10 +1,10 @@
 @use "src/_custom" as *;
 
 .Menu {
-  height: 100dvh;
+  min-height: 100dvh;
   position: relative;
   box-sizing: border-box;
-  width: 100%;
+  min-width: 100%;
   /*  overflow: hidden; */
   &-principal {
     height: 100%;
@@ -61,45 +61,6 @@
     gap: 5rem;
   }
 
-  &-row {
-    padding: 0;
-    margin: 0;
-
-    &--info {
-      backdrop-filter: blur(1rem);
-    }
-
-    &--background {
-      justify-content: center;
-      align-items: center;
-    }
-    &--targets {
-      margin-top: 1rem;
-    }
-  }
-
-  &-artist {
-    &--background {
-      width: 100%;
-      background-repeat: no-repeat;
-      backdrop-filter: blur(10px);
-      background-size: cover;
-      background-position: center;
-      display: flex;
-      align-items: center;
-      &::before {
-        content: "";
-        backdrop-filter: blur(10px);
-        inset: 0;
-        background-color: rgba(0, 0, 0, 0.5);
-        height: 100%;
-        width: 100%;
-        position: absolute;
-        z-index: -1;
-      }
-    }
-  }
-
   &-content {
     display: flex;
     justify-content: center;
@@ -146,9 +107,17 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
-    gap: 10rem;
+    width: 300dvw;
+    border: 2px solid red;
   }
+
+  &-row {
+    padding: 0;
+    margin: 0;
+    border: 2px solid orange;
+    width: 100dvh;
+  }
+
   &-h1 {
     font-weight: bold;
     font-size: clamp(1rem, 3vw, 4rem);
@@ -185,29 +154,6 @@
     background-color: rgba(10, 10, 10, 0.5);
   }
 
-  &-controls {
-    top: 50%;
-    z-index: 11;
-    position: absolute;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 0 1rem;
-
-    @include media-breakpoint-up(md) {
-      margin: 0 3rem;
-    }
-    &:hover {
-      cursor: pointer;
-    }
-    &--leftCarrousel {
-      left: 0;
-    }
-
-    &--rightCarrousel {
-      right: 0;
-    }
-  }
   &-svg {
     background-color: #212529;
     /* rgba(0, 0, 0, 0.5) */
