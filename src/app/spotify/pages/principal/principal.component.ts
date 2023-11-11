@@ -154,7 +154,7 @@ export class PrincipalComponent
     console.log(this.containerHorizontal.nativeElement);
     const sections = gsap.utils.toArray('.Menu-row');
     gsap.to(sections, {
-      xPercent: -100 * (sections.length - 1),
+      xPercent: -75 * (sections.length - 1),
       ease: 'none',
       scrollTrigger: {
         trigger: this.containerHorizontal.nativeElement,
