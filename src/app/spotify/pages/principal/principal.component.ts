@@ -42,9 +42,10 @@ export class PrincipalComponent
       observ.subscribe((albums: Artists[]) => {
         this.spinnerIsActive = false;
         this.artistas = albums;
-   /*      window.scrollTo(0, 0);
+        /*      window.scrollTo(0, 0);
         this.animationSpotifyLogo();
         this.animationScrollPhonesMockup(); */
+        this.animationHorizontal();
       });
     });
   }
@@ -143,6 +144,28 @@ export class PrincipalComponent
     });
 
     /* ideal segun yo 150 mobile, 100 normal para el start */
+  }
+
+  @ViewChild('containerHorizontal')
+  containerHorizontal!: ElementRef<HTMLElement>;
+  @ViewChildren('childHorizontal')
+  childsHorizontal!: QueryList<ElementRef>;
+  animationHorizontal() {
+    console.log(this.containerHorizontal.nativeElement);
+    const sections = gsap.utils.toArray('.Menu-row');
+    gsap.to(sections, {
+      xPercent: -100 * (sections.length - 1),
+      ease: 'none',
+      scrollTrigger: {
+        trigger: this.containerHorizontal.nativeElement,
+        scrub: true,
+        pin: true,
+        start: 'top 15%',
+        markers: true,
+        snap: 1 / (sections.length - 1),
+        end: '+=' + (this.containerHorizontal.nativeElement.offsetWidth),
+      },
+    });
   }
 
   constructor(
