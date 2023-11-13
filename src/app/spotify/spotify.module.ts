@@ -13,9 +13,9 @@ import { SpinnerComponent } from './components/spinner/spinner.component';
 import { ImgPipe } from './pipes/img.pipe';
 import { ArtistaComponent } from './pages/artista/artista.component';
 import { DomseguroPipe } from './pipes/domseguro.pipe';
-import { SgvIconsComponent } from './components/sgv-icons/sgv-icons.component';
 import { CarrouselComponent } from './components/carrousel/carrousel.component';
 import { MockupMobileComponent } from './components/mockup-mobile/mockup-mobile.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -35,6 +35,7 @@ import { MockupMobileComponent } from './components/mockup-mobile/mockup-mobile.
     CommonModule,
     CarrouselComponent,
     MockupMobileComponent,
+    RouterModule,
   ],
 })
 export class SpotifyModule {}

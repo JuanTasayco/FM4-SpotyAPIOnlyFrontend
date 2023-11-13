@@ -54,8 +54,8 @@
     <section>
       <div #carrouselContainer class="Menu-carousel">
         <div class="row m-0 p-0 justify-content-center align-items-center">
-          <div #carrouselDescription class="col-12 col-lg-6 col-xl-5 p-5">
-            <h2 class="fw-bold fs-1">
+          <div #carrouselDescription class="col-12 col-lg-6 col-xl-6 p-5">
+            <h2 class="Menu-h2 Menu-h2--carrouselText fw-bold">
               Reproduce y escucha lo mejor de nuestro repertorio
               <!-- Making earth cooler for people, nature, climate -->
             </h2>
@@ -64,9 +64,11 @@
               podrás buscar a tu artista favorito, si no deseas un preview de la
               canción redirigete a la página oficial rapidamente.
             </p>
-            <button class="btn btn-success fw-bold mt-5">Buscar ahora</button>
+            <button class="Menu-button btn fw-bold mt-5 py-2 py-md-3 px-4">
+              Buscar ahora
+            </button>
           </div>
-          <div #carrouselSection class="col-12 col-lg-6 col-xl-7 p-5">
+          <div #carrouselSection class="col-12 col-lg-6 col-xl-6 py-5">
             <div class="Menu-appCarrousel">
               <app-carrousel
                 *ngIf="artistas"
@@ -140,7 +142,32 @@
           </div>
         </div>
         <div class="Menu-final">
-          <app-cards [contenidos]="artistas"></app-cards>
+          <!--  <app-cards [contenidos]="artistas"></app-cards> -->
+          <div class="Menu-title Menu-title--final d-flex flex-column my-3">
+            <h2 class="Menu-h2 Menu-h2--final fw-bold">Revisa.</h2>
+            <h2 class="Menu-h2 Menu-h2--final fw-bold">Prueba.</h2>
+            <h2 class="Menu-h2 Menu-h2--final fw-bold">Disfruta.</h2>
+          </div>
+
+          <p class="Menu-p Menu-p--final text-center">
+            Recuerda que esta página te permite buscar a tu artista preferido de
+            manera gratuita, nunca te cobraremos dinero alguno, las
+            subscripciones a spotify son directamente desde su web oficial.
+          </p>
+
+          <div
+            class="text-center d-flex flex-column flex-md-row justify-content-center gap-3 my-5"
+          >
+            <button class="Menu-button btn px-5 py-3">
+              Ir a la página oficial
+            </button>
+            <button
+              (click)="redirectToSearchArtist()"
+              class="Menu-button btn px-5 py-3"
+            >
+              Buscar artistas aquí
+            </button>
+          </div>
         </div>
       </div>
 

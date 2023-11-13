@@ -19,6 +19,7 @@ export class CardsComponent implements OnInit, AfterViewInit {
   @ViewChildren('cardArtist') cards!: QueryList<ElementRef<HTMLElement>>;
   constructor() {}
   ngAfterViewInit(): void {
+    scrollTo(0, 0);
     setTimeout(() => {
       this.cards.forEach(({ nativeElement: element }, index, arreglo) => {
         if (index % 2 == 0) {

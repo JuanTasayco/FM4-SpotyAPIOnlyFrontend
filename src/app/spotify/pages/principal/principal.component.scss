@@ -13,7 +13,7 @@
   }
 
   &-carousel {
-    width: min(100%, 1700px);
+    width: min(95%, 1700px);
     margin: 8rem auto;
     @include media-breakpoint-down(md) {
       margin: 0 auto;
@@ -21,10 +21,11 @@
   }
 
   &-appCarrousel {
-    max-width: 80%;
+    max-width: 70%;
     max-height: 70%;
     margin: auto;
-    @include media-breakpoint-down(md) {
+    @include media-breakpoint-down(sm) {
+      border: 2px solid red;
       max-width: 100%;
       max-height: 100%;
     }
@@ -119,10 +120,12 @@
   }
 
   &-section {
-    width: min(100%, 1800px);
+    width: min(100%, 1300px);
 
     &--horizontalOne {
-      margin: auto 0 auto auto;
+      @include media-breakpoint-up(xxl) {
+        margin: auto 0 auto auto;
+      }
     }
     &--horizontalTwo {
       margin: auto auto auto 0;
@@ -140,16 +143,49 @@
   &-h2 {
     font-weight: 1000;
     letter-spacing: -1px;
-    font-size: clamp(0.9rem, 3vw, 3rem);
+    font-size: clamp(1rem, 3.5rem, 5rem);
     color: white;
+    background-clip: text;
+    color: transparent;
     &--title {
-      @include media-breakpoint-up(xxl) {
-        font-size: 4rem;
+      background-color: #4158d0;
+      background-image: linear-gradient(
+        43deg,
+        #4158d0 0%,
+        #c850c0 46%,
+        #ffcc70 100%
+      );
+    }
+
+    &--carrouselText {
+      background-color: #74ebd5;
+      background-image: linear-gradient(90deg, #74ebd5 0%, #9face6 100%);
+      font-size: 2.45rem;
+      @include media-breakpoint-up(md) {
+        font-size: 3.5rem;
       }
     }
-    &--contenedor2 {
-      font-weight: bold;
-      font-size: clamp(1.2rem, 2vw, 2.5rem);
+
+    &--final {
+      &:nth-child(1) {
+        background-color: #0093e9;
+        background-image: linear-gradient(160deg, #0093e9 0%, #80d0c7 100%);
+      }
+      &:nth-child(2) {
+        background-color: #4158d0;
+        background-image: linear-gradient(
+          43deg,
+          #4158d0 0%,
+          #c850c0 46%,
+          #ffcc70 100%
+        );
+      }
+
+      &:nth-child(3) {
+        background-color: #21d4fd;
+        background-image: linear-gradient(19deg, #21d4fd 0%, #b721ff 100%);
+      }
+      font-size: clamp(1rem, 3.5rem, 5rem);
     }
   }
 
@@ -171,19 +207,13 @@
   }
 
   &-button {
-    background-color: #66219e;
-    background-image: linear-gradient(
-      230deg,
-      #66219e 0%,
-      #421871 24%,
-      #212692 75%,
-      #4d178b 100%
-    );
-
+    background-color: #21d4fd;
+    background-image: linear-gradient(19deg, #21d4fd 0%, #b721ff 100%);
+    border: none;
     color: white;
     transition: transform 0.5s ease;
     &:hover {
-      transform: scale(1.3);
+      transform: scale(1.1);
       color: white;
     }
   }
@@ -212,11 +242,25 @@
   }
 
   &-p {
-    &--contenedor2 {
-      color: white;
-      @include media-breakpoint-up(xxl) {
-        width: 80%;
+    &--final {
+      @include media-breakpoint-up(md) {
+        text-align: center;
+        margin: auto;
+        width: 70%;
+        color: darkgray;
       }
+    }
+  }
+
+  &-final {
+    width: min(90%, 1300px);
+    margin: 10rem auto;
+  }
+
+  &-title {
+    &--final {
+      justify-content: center;
+      align-items: center;
     }
   }
 }

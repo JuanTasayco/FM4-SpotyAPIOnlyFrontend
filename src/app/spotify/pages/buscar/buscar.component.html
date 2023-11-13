@@ -8,6 +8,8 @@
         <form (ngSubmit)="presionarEnter()" class="Search-form">
           <input
             type="text"
+            id="search"
+            aria-labelledby="search"
             #valoresInput
             class="Search-input form-control bg-dark rounded-5 px-4"
             (input)="obtenerBusqueda($event)"
