@@ -8,7 +8,9 @@
         <img
           #logoSpotify
           src="assets/img/banner-ico.png"
-          alt=""
+          alt="logoImage"
+          width="80"
+          height="80"
           class="Menu-img Menu-img--animation"
         />
         <small #textSpotify class="fw-bold fs-5">Spotify</small>
@@ -50,12 +52,9 @@
     </div>
 
     <section>
-      <div class="Menu-carousel">
-        <div
-          *ngIf="artistas"
-          class="row m-0 p-0 justify-content-center align-items-center"
-        >
-          <div class="col-12 col-md-6 col-xl-5 p-5">
+      <div #carrouselContainer class="Menu-carousel">
+        <div class="row m-0 p-0 justify-content-center align-items-center">
+          <div #carrouselDescription class="col-12 col-lg-6 col-xl-5 p-5">
             <h2 class="fw-bold fs-1">
               Reproduce y escucha lo mejor de nuestro repertorio
               <!-- Making earth cooler for people, nature, climate -->
@@ -67,7 +66,7 @@
             </p>
             <button class="btn btn-success fw-bold mt-5">Buscar ahora</button>
           </div>
-          <div class="col-12 col-md-6 col-xl-7 p-5">
+          <div #carrouselSection class="col-12 col-lg-6 col-xl-7 p-5">
             <div class="Menu-appCarrousel">
               <app-carrousel
                 *ngIf="artistas"
@@ -81,8 +80,8 @@
       <div class="Menu-container Menu-container--horizontal overflow-hidden">
         <div #containerHorizontal class="Menu-detail h-auto p-5">
           <div #childHorizontal class="Menu-row row">
-            <div class="Menu-section row">
-              <div class="Menu-info col-xl-6 py-5">
+            <div class="Menu-section Menu-section--horizontalOne row">
+              <div class="Menu-info col-md-6 py-5">
                 <h2 class="fw-bold fs-1 text-start">Que podrás hacer aquí ?</h2>
                 <p class="Menu-p">
                   Esta página recopila los últimos éxitos más sonados de
@@ -92,9 +91,9 @@
                   u otra compartir la buena música que contiene Spotify.
                 </p>
               </div>
-              <div class="Menu-imgSec col-xl-6 p-2" *ngIf="artistas">
+              <div class="Menu-imgSec col-md-6 p-2" *ngIf="artistas">
                 <img
-                  [src]="artistas[4].images[0].url"
+                  [src]="artistas[4].images[1].url"
                   alt="imgArtista"
                   class="Menu-img Menu-img--contenedor2 img-fluid rounded-3 shadow-lg"
                 />
@@ -103,7 +102,7 @@
           </div>
 
           <div #childHorizontal class="Menu-row row gap-5">
-            <div class="Menu-section row">
+            <div class="Menu-section Menu-section--horizontalTwo row">
               <div
                 class="Menu-col col-md-5 me-2 shadow-lg rounded-3 rounded-3 p-4 p-md-5"
               >

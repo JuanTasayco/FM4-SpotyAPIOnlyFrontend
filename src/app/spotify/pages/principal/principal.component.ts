@@ -1,26 +1,24 @@
 import {
-  AfterViewChecked,
   AfterViewInit,
   ChangeDetectorRef,
   Component,
   ElementRef,
   OnInit,
   QueryList,
+  Renderer2,
   ViewChild,
   ViewChildren,
 } from '@angular/core';
 import { SpotifyService } from '../../services/spotify.service';
 import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { ActivatedRoute, Router } from '@angular/router';
+
+import { Router } from '@angular/router';
 import { Artists } from '../../interfaces/spotify.interface';
 @Component({
   selector: 'app-principal',
   templateUrl: './principal.component.html',
 })
-export class PrincipalComponent
-  implements OnInit, AfterViewInit, AfterViewChecked
-{
+export class PrincipalComponent implements OnInit, AfterViewInit {
   @ViewChild('containerMockupMobiles')
   containerMockupMobile!: ElementRef<HTMLElement>;
   @ViewChildren('phoneMockup') phonesMockup!: QueryList<ElementRef>;
@@ -28,29 +26,26 @@ export class PrincipalComponent
   @ViewChild('logoSpotify') logoSpotify!: ElementRef<HTMLElement>;
   @ViewChild('textSpotify') textSpotify!: ElementRef<HTMLElement>;
 
+  @ViewChild('carrouselContainer') containerCarrousel!: ElementRef<HTMLElement>;
   artistas!: Artists[];
   spinnerIsActive: boolean = false;
 
   ngAfterViewInit(): void {
-    /* logica para scrollanimations de contenedores */
+    this.removeHandlerWheel();
   }
 
   ngOnInit(): void {
     this.spinnerIsActive = true;
-
     this.spotiService.getNewRelease().then((observ) => {
       observ.subscribe((albums: Artists[]) => {
         this.spinnerIsActive = false;
         this.artistas = albums;
-        /*      window.scrollTo(0, 0);
+
+        this.cdr.detectChanges();
         this.animationSpotifyLogo();
-        this.animationScrollPhonesMockup(); */
-        this.animationHorizontal();
       });
     });
   }
-
-  ngAfterViewChecked(): void {}
 
   redirectToArtist(contenido: any) {
     if (contenido.type === 'artist') {
@@ -120,6 +115,12 @@ export class PrincipalComponent
               rotateX: '20',
               translateX: '40%',
               duration: 1.5,
+              onComplete: () => {
+                this.addHandlerWheel();
+                this.animationScrollPhonesMockup();
+                this.animationHorizontal();
+                this.animationCarrouselSection();
+              },
             });
           }
         });
@@ -134,16 +135,26 @@ export class PrincipalComponent
           y: '-100',
           scrollTrigger: {
             trigger: this.containerMockupMobile.nativeElement,
-            start: `start center`,
-            end: 'center center',
+            start: `start 30%`,
+            end: 'center 30%',
             scrub: true,
-            markers: true,
           },
         });
       }
     });
+  }
 
-    /* ideal segun yo 150 mobile, 100 normal para el start */
+  animationCarrouselSection() {
+    const el = this.containerCarrousel.nativeElement;
+    gsap.from(el, {
+      scale: 0.7,
+      scrollTrigger: {
+        scrub: true,
+        trigger: el,
+        start: 'top 90%',
+        end: 'center center',
+      },
+    });
   }
 
   @ViewChild('containerHorizontal')
@@ -151,27 +162,40 @@ export class PrincipalComponent
   @ViewChildren('childHorizontal')
   childsHorizontal!: QueryList<ElementRef>;
   animationHorizontal() {
-    console.log(this.containerHorizontal.nativeElement);
     const sections = gsap.utils.toArray('.Menu-row');
     gsap.to(sections, {
-      xPercent: -75 * (sections.length - 1),
+      xPercent: -70 * (sections.length - 1),
       ease: 'none',
       scrollTrigger: {
         trigger: this.containerHorizontal.nativeElement,
         scrub: true,
         pin: true,
         start: 'top 15%',
-        markers: true,
         snap: 1 / (sections.length - 1),
-        end: '+=' + (this.containerHorizontal.nativeElement.offsetWidth),
+        end: '+=' + this.containerHorizontal.nativeElement.offsetWidth,
       },
     });
   }
 
+  removeHandlerWheel() {
+    const htmlElement: HTMLElement =
+      this.el.nativeElement.ownerDocument.documentElement;
+    this.render.setStyle(htmlElement, 'overflow-y', 'hidden');
+    document.body.classList.add('scrollRemove');
+  }
+
+  addHandlerWheel() {
+    const htmlElement: HTMLElement =
+      this.el.nativeElement.ownerDocument.documentElement;
+    this.render.removeStyle(htmlElement, 'overflow-y');
+    document.body.classList.remove('scrollRemove');
+  }
+
   constructor(
     private spotiService: SpotifyService,
-    private cdr: ChangeDetectorRef,
     private router: Router,
-    private activatedRouter: ActivatedRoute
+    private render: Renderer2,
+    private el: ElementRef,
+    private cdr: ChangeDetectorRef
   ) {}
 }

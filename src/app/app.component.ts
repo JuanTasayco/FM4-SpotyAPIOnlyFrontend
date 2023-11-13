@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import Lenis from '@studio-freight/lenis';
 import { ScrollTrigger } from 'gsap/all';
 import { gsap } from 'gsap';
