@@ -59,6 +59,10 @@ export class PrincipalComponent implements OnInit, AfterViewInit {
     this.router.navigate(['/spotify/buscar']);
   }
 
+  redirectOficialPage() {
+    window.open('https://open.spotify.com/intl-es', '_blank');
+  }
+
   animationSpotifyLogo() {
     const tl = gsap.timeline({});
     gsap.set(this.logoSpotify.nativeElement, {
