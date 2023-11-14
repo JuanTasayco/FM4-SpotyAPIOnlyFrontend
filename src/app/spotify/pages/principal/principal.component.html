@@ -64,7 +64,10 @@
               podrás buscar a tu artista favorito, si no deseas un preview de la
               canción redirigete a la página oficial rapidamente.
             </p>
-            <button class="Menu-button btn fw-bold mt-5 py-2 py-md-3 px-4">
+            <button
+              (click)="redirectToSearchArtist()"
+              class="Menu-button btn fw-bold mt-5 py-2 py-md-3 px-4"
+            >
               Buscar ahora
             </button>
           </div>
@@ -80,25 +83,36 @@
       </div>
 
       <div class="Menu-container Menu-container--horizontal overflow-hidden">
-        <div #containerHorizontal class="Menu-detail h-auto p-5">
+        <article
+          #containerHorizontal
+          class="Menu-detail p-md-5 p-2 justify-content-start align-items-start"
+        >
           <div #childHorizontal class="Menu-row row">
-            <div class="Menu-section Menu-section--horizontalOne row">
-              <div class="Menu-info col-md-6 py-5">
-                <h2 class="fw-bold fs-1 text-start">Que podrás hacer aquí ?</h2>
-                <p class="Menu-p">
-                  Esta página recopila los últimos éxitos más sonados de
-                  Spotify, también puedes buscar tus artitas favoritas y
-                  escuchar su música más sonada desde aquí, esta página está
-                  hecha sin fines de lucro, está construida para de alguna forma
-                  u otra compartir la buena música que contiene Spotify.
-                </p>
-              </div>
-              <div class="Menu-imgSec col-md-6 p-2" *ngIf="artistas">
-                <img
-                  [src]="artistas[4].images[1].url"
-                  alt="imgArtista"
-                  class="Menu-img Menu-img--contenedor2 img-fluid rounded-3 shadow-lg"
-                />
+            <div class="Menu-section Menu-section--horizontalOne">
+              <h2 class="Menu-h2 Menu-h2--carrouselText text-center">
+                El éxito de Spotify gracias a ti!
+              </h2>
+              <p class="Menu-p Menu-p--final mt-3 text-center">
+                Spotify es grande gracias a ti y las estadísticas nos respaldan,
+                más de 80 millones de oyentes al mes nos hace líderes en el
+                mercado.
+              </p>
+
+              <div class="Menu-statistics row">
+                <div class="Menu-data col-md-4">
+                  <small class="Menu-small Menu-small--title">80M+</small>
+                  <small class="Menu-small Menu-small--subtitle">oyentes</small>
+                </div>
+                <div class="Menu-data col-md-4">
+                  <small class="Menu-small Menu-small--title">1B+</small>
+                  <small class="Menu-small Menu-small--subtitle"
+                    >contribuyentes</small
+                  >
+                </div>
+                <div class="Menu-data col-md-4">
+                  <small class="Menu-small Menu-small--title">50+</small>
+                  <small class="Menu-small Menu-small--subtitle">países</small>
+                </div>
               </div>
             </div>
           </div>
@@ -140,7 +154,7 @@
               </div>
             </div>
           </div>
-        </div>
+        </article>
         <div class="Menu-final">
           <!--  <app-cards [contenidos]="artistas"></app-cards> -->
           <div class="Menu-title Menu-title--final d-flex flex-column my-3">

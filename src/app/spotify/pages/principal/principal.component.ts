@@ -164,14 +164,14 @@ export class PrincipalComponent implements OnInit, AfterViewInit {
   animationHorizontal() {
     const sections = gsap.utils.toArray('.Menu-row');
     gsap.to(sections, {
-      xPercent: -70 * (sections.length - 1),
+      xPercent: -100 * (sections.length - 1),
       ease: 'none',
       scrollTrigger: {
         trigger: this.containerHorizontal.nativeElement,
         scrub: true,
         pin: true,
         start: 'top 15%',
-        snap: 1 / (sections.length - 1),
+
         end: '+=' + this.containerHorizontal.nativeElement.offsetWidth,
       },
     });
